@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>TechScale Partners | Consultora Tecnológica Especializada en PYMES</title>
+    <meta name="description" content="Consultora tecnológica especializada en escalamiento de PYMES. Análisis de datos, automatización, desarrollo a medida e IA. Consulta gratuita disponible.">
+    <meta name="keywords" content="consultora tecnológica, PYMES, análisis de datos, automatización, desarrollo software, inteligencia artificial, escalamiento empresarial">
+    <meta name="author" content="TechScale Partners">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="TechScale Partners | Consultora Tecnológica Especializada en PYMES">
+    <meta property="og:description" content="Escalamos tu PYME con tecnología de vanguardia. Integramos equipos de alto rendimiento sin los costes tradicionales.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://techscalepartners.com">
+    <meta property="og:site_name" content="TechScale Partners">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TechScale Partners | Consultora Tecnológica Especializada en PYMES">
+    <meta name="twitter:description" content="Escalamos tu PYME con tecnología de vanguardia. Integramos equipos de alto rendimiento sin los costes tradicionales.">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(255, 215, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 0.1rem; /* Aumentado de 2rem a 4rem */
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FFD700;
+            text-decoration: none;
+	    margin-left: -6rem;
+        }
+
+        .nav-menu {
+            display: none;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #FFD700;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            margin-left: auto;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #FFD700;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #000 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23FFD700" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .highlight {
+            color: #FFD700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #FFD700;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: #000;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #FFD700;
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.15);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 1.5rem;
+        }
+
+        .project-category {
+            background: #000;
+            color: #FFD700;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .project-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .result-item {
+            text-align: center;
+            padding: 0.75rem;
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+        }
+
+        .result-number {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FFD700;
+        }
+
+        .result-label {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .project-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: #000;
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .about {
+            padding: 100px 0;
+            background: #000;
+            color: #fff;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #FFD700;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFD700;
+            display: block;
+        }
+
+        .stat-label {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Blog Section */
+        .blog {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #000;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .blog-excerpt {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: #000;
+            color: #fff;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .calendly-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .calendly-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #FFD700;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            color: #888;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 2rem; /* En mobile mantenemos 2rem */
+            }
+            
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: #000;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-results {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">TechScale Partners</a>
+            <ul class="nav-menu">
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Escalamos tu <span class="highlight">PYME</span><br>con tecnología de vanguardia</h1>
+            <p>Integramos equipos de alto rendimiento en tu empresa sin los costes tradicionales. Análisis de datos, automatización, desarrollo a medida y optimización de procesos.</p>
+            <a href="#contacto" class="cta-button">Consulta Gratuita</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Soluciones tecnológicas integrales para impulsar el crecimiento de tu empresa</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Análisis y Visualización de Datos</h3>
+                    <p>Convertimos tus datos en insights accionables. Dashboards interactivos, reportes automatizados y análisis predictivo para tomar decisiones informadas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Automatización de Procesos</h3>
+                    <p>Optimizamos tus flujos de trabajo eliminando tareas repetitivas. Implementamos soluciones de automatización que aumentan la eficiencia y reducen errores.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Desarrollo de Software a Medida</h3>
+                    <p>Creamos aplicaciones y sistemas personalizados que se adaptan perfectamente a las necesidades específicas de tu negocio.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Integraciones Tecnológicas</h3>
+                    <p>Conectamos tus herramientas y sistemas existentes para crear un ecosistema tecnológico cohesivo y eficiente.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Consultoría en IA</h3>
+                    <p>Te ayudamos a identificar oportunidades para implementar inteligencia artificial de manera estratégica en tu negocio.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Optimización y Escalabilidad</h3>
+                    <p>Preparamos tu infraestructura tecnológica para el crecimiento, garantizando performance y escalabilidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="proyectos" class="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Proyectos Destacados</h2>
+                <p>Casos de éxito que demuestran nuestro compromiso con la excelencia tecnológica</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <div class="project-category">Manufactura</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Sistema de Control de Inventario Inteligente</h3>
+                        <p>Implementamos un sistema de gestión de inventario con predicción de demanda basada en IA, reduciendo costes de almacenamiento en un 40% y mejorando la disponibilidad de productos.</p>
+                        <div class="project-results">
+                            <div class="result-item">
+                                <span class="result-number">40%</span>
+                                <span class="result-label">Reducción de Costes</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">95%</span>
+                                <span class="result-label">Disponibilidad</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">6 meses</span>
+                                <span class="result-label">ROI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-technologies">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Power BI</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="project-category">Retail</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Plataforma E-commerce Omnicanal</h3>
+                        <p>Desarrollamos una plataforma que integra tienda física y online, con sistema de gestión unificado y analytics avanzado, incrementando las ventas en un 65%.</p>
+                        <div class="project-results">
+                            <div class="result-item">
+                                <span class="result-number">65%</span>
+                                <span class="result-label">Aumento Ventas</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">200%</span>
+                                <span class="result-label">Conversión Online</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">3x</span>
+                                <span class="result-label">Eficiencia</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-technologies">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="project-category">Salud</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Sistema de Gestión Clínica Digital</h3>
+                        <p>Digitalizamos completamente el flujo de trabajo de una clínica, desde citas hasta historiales médicos, mejorando la eficiencia operativa en un 80%.</p>
+                        <div class="project-results">
+                            <div class="result-item">
+                                <span class="result-number">80%</span>
+                                <span class="result-label">Eficiencia</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">99.9%</span>
+                                <span class="result-label">Disponibilidad</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">100%</span>
+                                <span class="result-label">Digitalización</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-technologies">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Laravel</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="nosotros" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>¿Por qué TechScale Partners?</h2>
+                    <p>Somos una consultora tecnológica especializada en ayudar a las PYMES a escalar de manera eficiente. Nuestro enfoque único combina análisis de datos avanzado, desarrollo de software a medida y optimización de procesos.</p>
+                    <p>No somos una agencia más. Somos tus partners tecnológicos, integrando nuestro equipo de alto rendimiento directamente en tu empresa sin los costes y complicaciones de contrataciones tradicionales.</p>
+                    <p>Con experiencia en múltiples industrias, entendemos los desafíos únicos que enfrentan las empresas en crecimiento y desarrollamos soluciones que realmente impulsan resultados.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Proyectos Exitosos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Satisfacción Cliente</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3x</span>
+                        <span class="stat-label">Crecimiento Promedio</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Soporte Técnico</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>Insights y Recursos</h2>
+                <p>Mantente actualizado con las últimas tendencias tecnológicas y mejores prácticas</p>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">15 Dic 2024</div>
+                        <h3 class="blog-title">5 KPIs Esenciales para Medir el Crecimiento de tu PYME</h3>
+                        <p class="blog-excerpt">Descubre las métricas clave que toda empresa en crecimiento debe monitorear para tomar decisiones estratégicas basadas en datos.</p>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">10 Dic 2024</div>
+                        <h3 class="blog-title">Automatización: Por Dónde Empezar en tu Empresa</h3>
+                        <p class="blog-excerpt">Una guía práctica para identificar los primeros procesos a automatizar y maximizar el ROI de tu inversión tecnológica.</p>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">5 Dic 2024</div>
+                        <h3 class="blog-title">Cloud vs On-Premise: Qué Opción Conviene a tu PYME</h3>
+                        <p class="blog-excerpt">Analizamos las ventajas y desventajas de cada opción para ayudarte a tomar la mejor decisión para tu negocio.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2>¿Listo para Escalar tu Negocio?</h2>
+            <p>Agenda una consulta gratuita y descubre cómo podemos ayudarte a alcanzar tus objetivos</p>
+            <a href="https://calendly.com/tu-usuario" class="calendly-button" target="_blank">
+                <i class="fas fa-calendar-alt"></i> Agendar Consulta Gratuita
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#servicios">Servicios</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#blog">Blog</a>
+                <a href="#contacto">Contacto</a>
+                <a href="#">Política de Privacidad</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TechScale Partners. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #000 0%, #1a1a1a 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.7,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const finalNumber = stat.textContent;
+                        stat.style.opacity = '1';
+                        stat.style.transform = 'translateY(0)';
+                    });
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.about-stats');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+</html>
