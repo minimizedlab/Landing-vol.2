@@ -65,6 +65,7 @@
             justify-content: flex-start;
             align-items: center;
             gap: 3rem;
+            position: relative;
         }
 
         .logo {
@@ -72,24 +73,94 @@
             font-weight: 700;
             color: #FFD700;
             text-decoration: none;
-			margin-left: -6rem;
+            margin-left: -6rem;
         }
 
+        /* Menú lateral corregido - inicia desde la hamburguesa */
         .nav-menu {
-            display: none;
+            position: fixed;
+            top: 0.5rem; /* Alineado con el header */
+            right: -280px; /* Oculto a la derecha */
+            width: 280px;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            padding: 3rem 2rem 1.5rem 2rem; /* Más padding arriba para la cruz */
+            transition: right 0.3s ease;
+            z-index: 1001; /* Por encima del header */
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 12px;
+            box-shadow: -5px 5px 25px rgba(0, 0, 0, 0.3);
+            /*height: calc(100vh - 1rem);/* /* Ocupa desde el header hasta abajo */
+        }
+
+        .nav-menu.active {
+            right: 0;
         }
 
         .nav-menu a {
             color: #fff;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            width: 100%;
+        }
+
+        .nav-menu a:last-child {
+            border-bottom: none;
         }
 
         .nav-menu a:hover {
             color: #FFD700;
+            padding-left: 0.5rem;
+        }
+
+        /* Botón de cerrar (cruz) */
+        .close-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #FFD700;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-menu:hover {
+            color: #FFA500;
+            transform: rotate(90deg);
+        }
+
+        /* Overlay corregido - cubre toda la página */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999; /* Por debajo del menú pero por encima de todo lo demás */
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         .hamburger {
@@ -98,6 +169,13 @@
             cursor: pointer;
             padding: 5px;
             margin-left: auto;
+            margin-right: -6rem;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Hamburguesa se atenúa cuando el menú está activo, no se transforma en X */
+        .hamburger.active {
+            opacity: 0;
         }
 
         .hamburger span {
@@ -119,17 +197,6 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23FFD700" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            z-index: 1;
         }
 
         .hero-content {
@@ -262,11 +329,39 @@
             background: #fff;
         }
 
+        /* Carrusel de proyectos */
+        .projects-container {
+            position: relative;
+        }
+
         .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            display: flex;
+            overflow-x: auto;
+            overflow-y: hidden;
             gap: 2rem;
             margin-top: 3rem;
+            padding-bottom: 1rem;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #FFD700 #f1f1f1;
+        }
+
+        .projects-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .projects-grid::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .projects-grid::-webkit-scrollbar-thumb {
+            background: #FFD700;
+            border-radius: 4px;
+        }
+
+        .projects-grid::-webkit-scrollbar-thumb:hover {
+            background: #FFA500;
         }
 
         .project-card {
@@ -277,6 +372,8 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            min-width: calc((100% - 2rem) / 2);
+            flex: 0 0 calc((100% - 2rem) / 2);
         }
 
         .project-card::before {
@@ -293,6 +390,35 @@
             transform: translateY(-5px);
             border-color: #FFD700;
             box-shadow: 0 15px 35px rgba(255, 215, 0, 0.15);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #FFD700;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(0, 0, 0, 0.9);
+            color: #FFA500;
+        }
+
+        .carousel-prev {
+            left: -25px;
+        }
+
+        .carousel-next {
+            right: -25px;
         }
 
         .project-header {
@@ -377,6 +503,7 @@
             font-size: 0.8rem;
             font-weight: 500;
         }
+
         .about {
             padding: 100px 0;
             background: #000;
@@ -387,7 +514,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .about-text h2 {
@@ -395,6 +522,8 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: #FFD700;
+            white-space: nowrap;
+            line-height: 1.1;
         }
 
         .about-text p {
@@ -407,7 +536,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 3.5rem;
         }
 
         .stat-item {
@@ -527,76 +656,90 @@
             box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
         }
 
-        /* Footer */
+        /* Footer con columnas ajustadas */
         .footer {
             background: #1a1a1a;
             color: #fff;
-            padding: 3rem 0 1rem;
-            text-align: center;
+            padding: 4rem 0 2rem;
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            text-align: left;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
+        .footer-section h3 {
+            color: #FFD700;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
         }
 
-        .footer-links a {
+        .footer-section p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
             color: #ccc;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .footer-links a:hover {
+        .footer-section a:hover {
             color: #FFD700;
         }
 
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            color: #FFD700;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #FFD700;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .footer-section p i {
+            color: #FFD700;
+            margin-right: 0.5rem;
+            width: 16px;
+        }
+
         .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
             border-top: 1px solid #333;
-            padding-top: 1rem;
             color: #888;
         }
 
         /* Mobile Styles */
         @media (max-width: 768px) {
             .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background: #000;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                padding: 2rem 0;
-                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
+                width: 250px;
+                right: -250px;
             }
 
             .hero h1 {
@@ -616,6 +759,10 @@
                 text-align: center;
             }
 
+            .about-text h2 {
+                white-space: normal;
+            }
+
             .about-stats {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -629,9 +776,20 @@
                 gap: 0.5rem;
             }
 
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
+            /* Carrusel móvil */
+            .project-card {
+                min-width: 320px;
+                flex: 0 0 320px;
+            }
+
+            .carousel-nav {
+                display: none;
+            }
+
+            /* Footer móvil */
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
             }
         }
 
@@ -659,6 +817,22 @@
             .about-stats {
                 grid-template-columns: 1fr;
             }
+
+            .project-card {
+                min-width: 300px;
+                flex: 0 0 300px;
+            }
+
+            .nav-menu {
+                width: 220px;
+                right: -220px;
+            }
+
+            /* Footer muy pequeño */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
     </style>
 </head>
@@ -668,6 +842,7 @@
         <nav class="nav-container">
             <a href="#" class="logo">TechScale Partners</a>
             <ul class="nav-menu">
+                <button class="close-menu">&times;</button>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
@@ -680,6 +855,7 @@
                 <span></span>
             </div>
         </nav>
+        <div class="menu-overlay"></div>
     </header>
 
     <!-- Hero Section -->
@@ -745,112 +921,119 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects Section con Carrusel -->
     <section id="proyectos" class="projects">
         <div class="container">
             <div class="section-title">
                 <h2>Proyectos Destacados</h2>
                 <p>Casos de éxito que demuestran nuestro compromiso con la excelencia tecnológica</p>
             </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-industry"></i>
-                        </div>
-                        <div class="project-category">Manufactura</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Sistema de Control de Inventario Inteligente</h3>
-                        <p>Implementamos un sistema de gestión de inventario con predicción de demanda basada en IA, reduciendo costes de almacenamiento en un 40% y mejorando la disponibilidad de productos.</p>
-                        <div class="project-results">
-                            <div class="result-item">
-                                <span class="result-number">40%</span>
-                                <span class="result-label">Reducción de Costes</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-number">95%</span>
-                                <span class="result-label">Disponibilidad</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-number">6 meses</span>
-                                <span class="result-label">ROI</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-technologies">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Machine Learning</span>
-                        <span class="tech-tag">Power BI</span>
-                    </div>
-                </div>
+            
+            <div class="projects-container">
+                <button class="carousel-nav carousel-prev" onclick="scrollCarousel(-1)">‹</button>
+                <button class="carousel-nav carousel-next" onclick="scrollCarousel(1)">›</button>
                 
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-store"></i>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <div class="project-category">Manufactura</div>
                         </div>
-                        <div class="project-category">Retail</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Plataforma E-commerce Omnicanal</h3>
-                        <p>Desarrollamos una plataforma que integra tienda física y online, con sistema de gestión unificado y analytics avanzado, incrementando las ventas en un 65%.</p>
-                        <div class="project-results">
-                            <div class="result-item">
-                                <span class="result-number">65%</span>
-                                <span class="result-label">Aumento Ventas</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-number">200%</span>
-                                <span class="result-label">Conversión Online</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-number">3x</span>
-                                <span class="result-label">Eficiencia</span>
+                        <div class="project-content">
+                            <h3>Sistema de Control de Inventario Inteligente</h3>
+                            <p>Implementamos un sistema de gestión de inventario con predicción de demanda basada en IA, reduciendo costes de almacenamiento en un 40% y mejorando la disponibilidad de productos.</p>
+                            <div class="project-results">
+                                <div class="result-item">
+                                    <span class="result-number">40%</span>
+                                    <span class="result-label">Reducción de Costes</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-number">95%</span>
+                                    <span class="result-label">Disponibilidad</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-number">6 meses</span>
+                                    <span class="result-label">ROI</span>
+                                </div>
                             </div>
                         </div>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Power BI</span>
+                        </div>
                     </div>
-                    <div class="project-technologies">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">PostgreSQL</span>
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div class="project-category">Retail</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Plataforma E-commerce Omnicanal</h3>
+                            <p>Desarrollamos una plataforma que integra tienda física y online, con sistema de gestión unificado y analytics avanzado, incrementando las ventas en un 65%.</p>
+                            <div class="project-results">
+                                <div class="result-item">
+                                    <span class="result-number">65%</span>
+                                    <span class="result-label">Aumento Ventas</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-number">200%</span>
+                                    <span class="result-label">Conversión Online</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-number">3x</span>
+                                    <span class="result-label">Eficiencia</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-technologies">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-heartbeat"></i>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="project-category">Salud</div>
                         </div>
-                        <div class="project-category">Salud</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Sistema de Gestión Clínica Digital</h3>
-                        <p>Digitalizamos completamente el flujo de trabajo de una clínica, desde citas hasta historiales médicos, mejorando la eficiencia operativa en un 80%.</p>
-                        <div class="project-results">
-                            <div class="result-item">
-                                <span class="result-number">80%</span>
-                                <span class="result-label">Eficiencia</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-number">99.9%</span>
-                                <span class="result-label">Disponibilidad</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="result-number">100%</span>
-                                <span class="result-label">Digitalización</span>
+                        <div class="project-content">
+                            <h3>Sistema de Gestión Clínica Digital</h3>
+                            <p>Digitalizamos completamente el flujo de trabajo de una clínica, desde citas hasta historiales médicos, mejorando la eficiencia operativa en un 80%.</p>
+                            <div class="project-results">
+                                <div class="result-item">
+                                    <span class="result-number">80%</span>
+                                    <span class="result-label">Eficiencia</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-number">99.9%</span>
+                                    <span class="result-label">Disponibilidad</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-number">100%</span>
+                                    <span class="result-label">Digitalización</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="project-technologies">
-                        <span class="tech-tag">Vue.js</span>
-                        <span class="tech-tag">Laravel</span>
-                        <span class="tech-tag">MySQL</span>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <section id="nosotros" class="about">
         <div class="container">
             <div class="about-content">
@@ -935,37 +1118,91 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer con columnas ajustadas -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="#servicios">Servicios</a>
-                <a href="#nosotros">Nosotros</a>
-                <a href="#blog">Blog</a>
-                <a href="#contacto">Contacto</a>
-                <a href="#">Política de Privacidad</a>
+            <div class="footer-section">
+                <h3>TechScale Partners</h3>
+                <p>Ayudamos a PYMEs a escalar eficientemente mediante tecnología de vanguardia y equipos de alto rendimiento.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 TechScale Partners. Todos los derechos reservados.</p>
+            
+            <div class="footer-section">
+                <h3>Servicios</h3>
+                <p><a href="#servicios">Análisis de Datos</a></p>
+                <p><a href="#servicios">Automatización</a></p>
+                <p><a href="#servicios">Desarrollo a Medida</a></p>
+                <p><a href="#servicios">Integraciones</a></p>
             </div>
+            
+            <div class="footer-section">
+                <h3>Recursos</h3>
+                <p><a href="#blog">Blog</a></p>
+                <p><a href="#">Casos de Éxito</a></p>
+                <p><a href="#">Guías Gratuitas</a></p>
+                <p><a href="#">Webinars</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-envelope"></i> contacto@techscalepartners.com</p>
+                <p><i class="fas fa-phone"></i> +34 XXX XXX XXX</p>
+                <p><i class="fas fa-map-marker-alt"></i> Barcelona, España</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2024 TechScale Partners. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle con menú lateral corregido
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const closeMenu = document.querySelector('.close-menu');
 
+        // Abrir menú
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
         });
 
-        // Close menu when clicking on a link
+        // Cerrar menú con la cruz
+        closeMenu.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+
+        // Cerrar menú cuando hace click en el overlay
+        menuOverlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+
+        // Cerrar menú cuando hace click en cualquier enlace
         document.querySelectorAll('.nav-menu a').forEach(n => n.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
         }));
+
+        // Cerrar menú cuando hace click fuera del menú (pero no en overlay, para evitar duplicados)
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target) && !menuOverlay.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            }
+        });
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1015,6 +1252,16 @@
         const statsSection = document.querySelector('.about-stats');
         if (statsSection) {
             observer.observe(statsSection);
+        }
+
+        // Función para el carrusel de proyectos
+        function scrollCarousel(direction) {
+            const carousel = document.querySelector('.projects-grid');
+            const cardWidth = carousel.scrollWidth / 3;
+            carousel.scrollBy({
+                left: direction * cardWidth,
+                behavior: 'smooth'
+            });
         }
     </script>
 </body>
