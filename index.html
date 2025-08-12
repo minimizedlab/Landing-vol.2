@@ -796,7 +796,7 @@
 
             /* PROYECTOS MÓVIL - UNA CARD COMPLETA */
             .project-card {
-                min-width: calc(100vw - 4rem); /* Ancho completo menos márgenes */
+                min-width: calc(100vw - 4rem);
                 flex: 0 0 calc(100vw - 4rem);
             }
             
@@ -882,7 +882,7 @@
 
             /* PROYECTOS MÓVIL PEQUEÑO */
             .project-card {
-                min-width: calc(100vw - 2rem); /* Menos margen en móviles pequeños */
+                min-width: calc(100vw - 2rem);
                 flex: 0 0 calc(100vw - 2rem);
             }
             
@@ -1330,25 +1330,55 @@
             observer.observe(statsSection);
         }
 
-        // Función mejorada para el carrusel de proyectos
+        // ✅ JAVASCRIPT CORREGIDO - CENTRADO PERFECTO DE TARJETAS
         function scrollCarousel(direction) {
             const carousel = document.querySelector('.projects-grid');
-            const cardWidth = carousel.scrollWidth / 3;
-            carousel.scrollBy({
-                left: direction * cardWidth,
+            const cards = document.querySelectorAll('.project-card');
+            
+            if (cards.length === 0) return;
+            
+            // Calcular el ancho de una tarjeta más el gap
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 32; // 2rem = 32px
+            const moveDistance = cardWidth + gap;
+            
+            // Calcular posición actual y nueva
+            const currentScroll = carousel.scrollLeft;
+            const currentIndex = Math.round(currentScroll / moveDistance);
+            let newIndex = currentIndex + direction;
+            
+            // Limitar índices
+            newIndex = Math.max(0, Math.min(newIndex, cards.length - 1));
+            
+            // Calcular posición exacta para centrar la tarjeta
+            const newPosition = newIndex * moveDistance;
+            
+            carousel.scrollTo({
+                left: newPosition,
                 behavior: 'smooth'
             });
             
-            // Actualizar indicadores en móvil
-            updateIndicators();
+            // Actualizar indicadores
+            setTimeout(() => updateIndicators(newIndex), 300);
         }
 
-        // Función para ir a una diapositiva específica
+        // Función para ir a una diapositiva específica - MEJORADA
         function goToSlide(index) {
             const carousel = document.querySelector('.projects-grid');
-            const cardWidth = carousel.scrollWidth / 3;
+            const cards = document.querySelectorAll('.project-card');
+            
+            if (cards.length === 0) return;
+            
+            // Calcular el ancho de una tarjeta más el gap
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 32; // 2rem = 32px
+            const moveDistance = cardWidth + gap;
+            
+            // Calcular posición exacta
+            const newPosition = index * moveDistance;
+            
             carousel.scrollTo({
-                left: index * cardWidth,
+                left: newPosition,
                 behavior: 'smooth'
             });
             
@@ -1368,8 +1398,14 @@
             } else {
                 // Calcular qué indicador debería estar activo basado en scroll position
                 const carousel = document.querySelector('.projects-grid');
-                const cardWidth = carousel.scrollWidth / 3;
-                const currentIndex = Math.round(carousel.scrollLeft / cardWidth);
+                const cards = document.querySelectorAll('.project-card');
+                
+                if (cards.length === 0) return;
+                
+                const cardWidth = cards[0].offsetWidth;
+                const gap = 32;
+                const moveDistance = cardWidth + gap;
+                const currentIndex = Math.round(carousel.scrollLeft / moveDistance);
                 
                 indicators.forEach((dot, index) => {
                     dot.classList.toggle('active', index === currentIndex);
@@ -1379,7 +1415,7 @@
 
         // Actualizar indicadores cuando se hace scroll manual
         document.querySelector('.projects-grid')?.addEventListener('scroll', () => {
-            setTimeout(updateIndicators, 100); // Pequeño delay para mejor performance
+            setTimeout(updateIndicators, 100);
         });
     </script>
 </body>
