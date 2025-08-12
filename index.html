@@ -503,6 +503,11 @@
             font-weight: 500;
         }
 
+        /* Indicadores de navegación (puntos) - Solo móvil */
+        .projects-indicators {
+            display: none;
+        }
+
         .about {
             padding: 100px 0;
             background: #000;
@@ -734,20 +739,20 @@
             color: #888;
         }
 
-        /* Mobile Styles - CORREGIDOS */
+        /* Mobile Styles - MEJORADOS PARA PROYECTOS */
         @media (max-width: 768px) {
             .nav-container {
-                padding: 0 1rem; /* Más padding lateral para móvil */
+                padding: 0 1rem;
             }
             
             .logo {
-                margin-left: 0; /* Elimina el margen negativo en móvil */
-                font-size: 1.5rem; /* Logo más pequeño */
+                margin-left: 0;
+                font-size: 1.5rem;
             }
             
             .hamburger {
-                margin-right: 0; /* Elimina el margen negativo en móvil */
-                margin-left: auto; /* Mantiene alineación a la derecha */
+                margin-right: 0;
+                margin-left: auto;
             }
 
             .nav-menu {
@@ -789,14 +794,48 @@
                 gap: 0.5rem;
             }
 
-            /* Carrusel móvil */
+            /* PROYECTOS MÓVIL - UNA CARD COMPLETA */
             .project-card {
-                min-width: 320px;
-                flex: 0 0 320px;
+                min-width: calc(100vw - 4rem); /* Ancho completo menos márgenes */
+                flex: 0 0 calc(100vw - 4rem);
             }
-
+            
+            /* Flechas más pequeñas pero visibles */
             .carousel-nav {
-                display: none;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                display: block;
+            }
+            
+            .carousel-prev {
+                left: 10px;
+            }
+            
+            .carousel-next {
+                right: 10px;
+            }
+            
+            /* Mostrar indicadores de puntos */
+            .projects-indicators {
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+                margin-top: 2rem;
+            }
+            
+            .indicator-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: #ccc;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .indicator-dot.active {
+                background: #FFD700;
+                transform: scale(1.2);
             }
 
             /* Footer móvil */
@@ -808,12 +847,12 @@
 
         @media (max-width: 480px) {
             .nav-container {
-                padding: 0 0.5rem; /* Menos padding en pantallas muy pequeñas */
+                padding: 0 0.5rem;
             }
 
             .logo {
                 margin-left: 0;
-                font-size: 1.3rem; /* Logo aún más pequeño */
+                font-size: 1.3rem;
             }
             
             .hamburger {
@@ -841,9 +880,16 @@
                 grid-template-columns: 1fr;
             }
 
+            /* PROYECTOS MÓVIL PEQUEÑO */
             .project-card {
-                min-width: 300px;
-                flex: 0 0 300px;
+                min-width: calc(100vw - 2rem); /* Menos margen en móviles pequeños */
+                flex: 0 0 calc(100vw - 2rem);
+            }
+            
+            .carousel-nav {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
             }
 
             .nav-menu {
@@ -944,7 +990,7 @@
         </div>
     </section>
 
-    <!-- Projects Section con Carrusel -->
+    <!-- Projects Section con Carrusel MEJORADO -->
     <section id="proyectos" class="projects">
         <div class="container">
             <div class="section-title">
@@ -1052,6 +1098,13 @@
                             <span class="tech-tag">MySQL</span>
                         </div>
                     </div>
+                </div>
+                
+                <!-- Indicadores solo para móvil -->
+                <div class="projects-indicators">
+                    <span class="indicator-dot active" onclick="goToSlide(0)"></span>
+                    <span class="indicator-dot" onclick="goToSlide(1)"></span>
+                    <span class="indicator-dot" onclick="goToSlide(2)"></span>
                 </div>
             </div>
         </div>
@@ -1277,7 +1330,7 @@
             observer.observe(statsSection);
         }
 
-        // Función para el carrusel de proyectos
+        // Función mejorada para el carrusel de proyectos
         function scrollCarousel(direction) {
             const carousel = document.querySelector('.projects-grid');
             const cardWidth = carousel.scrollWidth / 3;
@@ -1285,7 +1338,49 @@
                 left: direction * cardWidth,
                 behavior: 'smooth'
             });
+            
+            // Actualizar indicadores en móvil
+            updateIndicators();
         }
+
+        // Función para ir a una diapositiva específica
+        function goToSlide(index) {
+            const carousel = document.querySelector('.projects-grid');
+            const cardWidth = carousel.scrollWidth / 3;
+            carousel.scrollTo({
+                left: index * cardWidth,
+                behavior: 'smooth'
+            });
+            
+            // Actualizar indicadores
+            updateIndicators(index);
+        }
+
+        // Función para actualizar los indicadores
+        function updateIndicators(activeIndex = null) {
+            const indicators = document.querySelectorAll('.indicator-dot');
+            if (indicators.length === 0) return;
+
+            if (activeIndex !== null) {
+                indicators.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === activeIndex);
+                });
+            } else {
+                // Calcular qué indicador debería estar activo basado en scroll position
+                const carousel = document.querySelector('.projects-grid');
+                const cardWidth = carousel.scrollWidth / 3;
+                const currentIndex = Math.round(carousel.scrollLeft / cardWidth);
+                
+                indicators.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+        }
+
+        // Actualizar indicadores cuando se hace scroll manual
+        document.querySelector('.projects-grid')?.addEventListener('scroll', () => {
+            setTimeout(updateIndicators, 100); // Pequeño delay para mejor performance
+        });
     </script>
 </body>
 </html>
