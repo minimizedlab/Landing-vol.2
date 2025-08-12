@@ -76,26 +76,25 @@
             margin-left: -6rem;
         }
 
-        /* Menú lateral corregido - inicia desde la hamburguesa */
+        /* Menú lateral - ajustado al contenido */
         .nav-menu {
             position: fixed;
-            top: 0.5rem; /* Alineado con el header */
-            right: -280px; /* Oculto a la derecha */
+            top: 4rem;
+            right: -280px;
             width: 280px;
             background: rgba(26, 26, 26, 0.95);
             backdrop-filter: blur(10px);
             display: flex;
             flex-direction: column;
-            padding: 3rem 2rem 1.5rem 2rem; /* Más padding arriba para la cruz */
+            padding: 3rem 2rem 1.5rem 2rem;
             transition: right 0.3s ease;
-            z-index: 1001; /* Por encima del header */
+            z-index: 1001;
             list-style: none;
             gap: 1.5rem;
-            text-align: center;
+            text-align: left;
             border: 1px solid rgba(255, 215, 0, 0.4);
             border-radius: 12px;
             box-shadow: -5px 5px 25px rgba(0, 0, 0, 0.3);
-            /*height: calc(100vh - 1rem);/* /* Ocupa desde el header hasta abajo */
         }
 
         .nav-menu.active {
@@ -152,7 +151,7 @@
             width: 100vw;
             height: 100vh;
             background: rgba(0, 0, 0, 0.5);
-            z-index: 999; /* Por debajo del menú pero por encima de todo lo demás */
+            z-index: 999;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
@@ -173,7 +172,7 @@
             transition: opacity 0.3s ease;
         }
 
-        /* Hamburguesa se atenúa cuando el menú está activo, no se transforma en X */
+        /* Hamburguesa se atenúa cuando el menú está activo */
         .hamburger.active {
             opacity: 0;
         }
@@ -735,8 +734,22 @@
             color: #888;
         }
 
-        /* Mobile Styles */
+        /* Mobile Styles - CORREGIDOS */
         @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem; /* Más padding lateral para móvil */
+            }
+            
+            .logo {
+                margin-left: 0; /* Elimina el margen negativo en móvil */
+                font-size: 1.5rem; /* Logo más pequeño */
+            }
+            
+            .hamburger {
+                margin-right: 0; /* Elimina el margen negativo en móvil */
+                margin-left: auto; /* Mantiene alineación a la derecha */
+            }
+
             .nav-menu {
                 width: 250px;
                 right: -250px;
@@ -795,7 +808,17 @@
 
         @media (max-width: 480px) {
             .nav-container {
-                padding: 0 1rem;
+                padding: 0 0.5rem; /* Menos padding en pantallas muy pequeñas */
+            }
+
+            .logo {
+                margin-left: 0;
+                font-size: 1.3rem; /* Logo aún más pequeño */
+            }
+            
+            .hamburger {
+                margin-right: 0;
+                margin-left: auto;
             }
 
             .container {
