@@ -693,6 +693,12 @@
             opacity: 0.9;
         }
 
+.about-text .highlight {
+    color: #FFD700;
+    font-weight: 700;
+}
+
+
         .about-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -898,7 +904,19 @@
 
         /* Mobile Styles - MEJORADOS PARA PROYECTOS */
         @media (max-width: 768px) {
-            .nav-container {
+                /* Centrar todo el contenido en móviles */
+    .section-title,
+    .service-card,
+    .project-content,
+    .blog-content,
+    .footer-section,
+    .about-text {
+        text-align: center;
+    }
+
+
+
+.nav-container {
                 padding: 0 1rem;
             }
             
@@ -1230,9 +1248,9 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>Sobre Minimais</h2>
-                    <p>En Minimais ayudamos a PYMEs y startups a optimizar sus operaciones y aprovechar la tecnología para trabajar de forma más eficiente y competitiva.</p>
-                    <p>Sumamos más de 8 años de experiencia mejorando procesos y desarrollando soluciones tecnológicas en entornos tan exigentes como la logística, el e-commerce y la tecnología. Hemos liderado y ejecutado proyectos internacionales en compañías como Amazon, Glovo, Habitissimo o Paack, y hoy aplicamos ese mismo nivel de exigencia a empresas que quieren crecer de forma sostenible.</p>
-                    <p>No creemos en soluciones genéricas. Cada proyecto parte de un análisis profundo y termina con una solución hecha a medida, diseñada para integrarse sin fricciones y generar resultados medibles. De esta forma, trabajamos con un modelo basado en resultados: solo cobramos si resolvemos tu problema.</p>
+                    <p>En Minimais ayudamos a PYMEs y startups a <span class="highlight">optimizar</span> sus operaciones y aprovechar la tecnología para trabajar de forma más eficiente y competitiva.</p>
+                    <p>Sumamos <span class="highlight">más de 8 años</span> de experiencia mejorando procesos y desarrollando soluciones tecnológicas en entornos tan exigentes como la logística, el e-commerce y la tecnología. Hemos liderado y ejecutado proyectos internacionales en compañías como <span class="highlight">Amazon, Glovo, Habitissimo o Paack</span>, y hoy aplicamos ese mismo nivel de exigencia a empresas que quieren crecer de forma sostenible.</p>
+                    <p>No creemos en soluciones genéricas. Cada proyecto parte de un análisis profundo y termina con una solución hecha a <span class="highlight">medida</span>, diseñada para integrarse sin fricciones y generar <span class="highlight">resultados medibles.</span> De esta forma, trabajamos con un modelo basado en resultados: solo cobramos si resolvemos tu problema.</p>
                 </div>
                 <div class="about-stats">
                     <div class="stat-item">
