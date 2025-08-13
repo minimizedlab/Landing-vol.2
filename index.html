@@ -123,7 +123,6 @@
             transform: translateX(-5px);
         }
 
-
         /* Botón de cerrar mejorado */
         .close-menu {
             position: absolute;
@@ -693,11 +692,10 @@
             opacity: 0.9;
         }
 
-.about-text .highlight {
-    color: #FFD700;
-    font-weight: 700;
-}
-
+        .about-text .highlight {
+            color: #FFD700;
+            font-weight: 700;
+        }
 
         .about-stats {
             display: grid;
@@ -726,17 +724,45 @@
             font-size: 0.9rem;
         }
 
-        /* Blog Section */
+        /* ========== BLOG SECTION CON CARRUSEL ========== */
         .blog {
             padding: 100px 0;
             background: #f8f9fa;
         }
 
+        /* Contenedor del carrusel de blog */
+        .blog-container {
+            position: relative;
+        }
+
         .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            overflow-x: auto;
+            overflow-y: hidden;
             gap: 2rem;
             margin-top: 3rem;
+            padding-bottom: 1rem;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #FFD700 #f1f1f1;
+        }
+
+        .blog-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .blog-grid::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .blog-grid::-webkit-scrollbar-thumb {
+            background: #FFD700;
+            border-radius: 4px;
+        }
+
+        .blog-grid::-webkit-scrollbar-thumb:hover {
+            background: #FFA500;
         }
 
         .blog-card {
@@ -745,11 +771,43 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            min-width: calc((100% - 4rem) / 3); /* Mostrar 3 cards */
+            flex: 0 0 calc((100% - 4rem) / 3);
         }
 
         .blog-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Botones de navegación del carrusel de blog */
+        .blog-carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #FFD700;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .blog-carousel-nav:hover {
+            background: rgba(0, 0, 0, 0.9);
+            color: #FFA500;
+        }
+
+        .blog-carousel-prev {
+            left: -25px;
+        }
+
+        .blog-carousel-next {
+            right: -25px;
         }
 
         .blog-image {
@@ -904,27 +962,26 @@
 
         /* Mobile Styles - MEJORADOS PARA PROYECTOS */
         @media (max-width: 768px) {
-                /* Centrar todo el contenido en móviles */
-    .section-title,
-    .service-card,
-    .project-content,
-    .blog-content,
-    .footer-section,
-    .about-text {
-        text-align: center;
-    }
+            /* Centrar todo el contenido en móviles */
+            .section-title,
+            .service-card,
+            .project-content,
+            .blog-content,
+            .footer-section,
+            .about-text {
+                text-align: center;
+            }
 
-.service-card p {
-        text-align: center;
-    }
+            .service-card p {
+                text-align: center;
+            }
 
-    /* Centrar iconos de redes sociales */
-    .social-links {
-        justify-content: center;
-    }
+            /* Centrar iconos de redes sociales */
+            .social-links {
+                justify-content: center;
+            }
 
-
-.nav-container {
+            .nav-container {
                 padding: 0 1rem;
             }
             
@@ -966,10 +1023,6 @@
 
             .about-stats {
                 grid-template-columns: repeat(2, 1fr);
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
             }
 
             .project-results {
@@ -1021,6 +1074,26 @@
                 transform: scale(1.2);
             }
 
+            /* ========== BLOG MÓVIL ========== */
+            .blog-card {
+                min-width: calc(100% - 2rem);
+                flex: 0 0 calc(100% - 2rem);
+            }
+            
+            .blog-carousel-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .blog-carousel-prev {
+                left: 10px;
+            }
+            
+            .blog-carousel-next {
+                right: 10px;
+            }
+
             /* Footer móvil */
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
@@ -1070,6 +1143,18 @@
             }
             
             .carousel-nav {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            /* ========== BLOG MÓVIL PEQUEÑO ========== */
+            .blog-card {
+                min-width: calc(100vw - 2rem);
+                flex: 0 0 calc(100vw - 2rem);
+            }
+            
+            .blog-carousel-nav {
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
@@ -1256,7 +1341,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>Sobre Minimais</h2>
-                    <p>En Minimais ayudamos a PYMEs y startups a <span class="highlight">optimizar</span> sus operaciones y aprovechar la tecnología para trabajar de forma más eficiente y competitiva.</p>
+                    <p>En Minimais ayudamos a <span class="highlight">PYMEs y startups</span> a <span class="highlight">optimizar</span> sus operaciones y aprovechar la tecnología para trabajar de forma más eficiente y competitiva.</p>
                     <p>Sumamos <span class="highlight">más de 8 años</span> de experiencia mejorando procesos y desarrollando soluciones tecnológicas en entornos tan exigentes como la logística, el e-commerce y la tecnología. Hemos liderado y ejecutado proyectos internacionales en compañías como <span class="highlight">Amazon, Glovo, Habitissimo o Paack</span>, y hoy aplicamos ese mismo nivel de exigencia a empresas que quieren crecer de forma sostenible.</p>
                     <p>No creemos en soluciones genéricas. Cada proyecto parte de un análisis profundo y termina con una solución hecha a <span class="highlight">medida</span>, diseñada para integrarse sin fricciones y generar <span class="highlight">resultados medibles.</span> De esta forma, trabajamos con un modelo basado en resultados: solo cobramos si resolvemos tu problema.</p>
                 </div>
@@ -1282,44 +1367,64 @@
         </div>
     </section>
 
-    <!-- Blog Section -->
+    <!-- Blog Section CON CARRUSEL -->
     <section id="blog" class="blog">
         <div class="container">
             <div class="section-title">
                 <h2>Insights y Recursos</h2>
                 <p>Mantente actualizado con las últimas tendencias tecnológicas y mejores prácticas</p>
             </div>
-            <div class="blog-grid">
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">15 Dic 2024</div>
-                        <h3 class="blog-title">5 KPIs Esenciales para Medir el Crecimiento de tu PYME</h3>
-                        <p class="blog-excerpt">Descubre las métricas clave que toda empresa en crecimiento debe monitorear para tomar decisiones estratégicas basadas en datos.</p>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">10 Dic 2024</div>
-                        <h3 class="blog-title">Automatización: Por Dónde Empezar en tu Empresa</h3>
-                        <p class="blog-excerpt">Una guía práctica para identificar los primeros procesos a automatizar y maximizar el ROI de tu inversión tecnológica.</p>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">5 Dic 2024</div>
-                        <h3 class="blog-title">Cloud vs On-Premise: Qué Opción Conviene a tu PYME</h3>
-                        <p class="blog-excerpt">Analizamos las ventajas y desventajas de cada opción para ayudarte a tomar la mejor decisión para tu negocio.</p>
-                    </div>
-                </article>
+            
+            <div class="blog-container">
+                <button class="blog-carousel-nav blog-carousel-prev" onclick="scrollBlogCarousel(-1)">‹</button>
+                <button class="blog-carousel-nav blog-carousel-next" onclick="scrollBlogCarousel(1)">›</button>
+                
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-date">15 Dic 2024</div>
+                            <h3 class="blog-title">5 KPIs Esenciales para Medir el Crecimiento de tu PYME</h3>
+                            <p class="blog-excerpt">Descubre las métricas clave que toda empresa en crecimiento debe monitorear para tomar decisiones estratégicas basadas en datos.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-date">10 Dic 2024</div>
+                            <h3 class="blog-title">Automatización: Por Dónde Empezar en tu Empresa</h3>
+                            <p class="blog-excerpt">Una guía práctica para identificar los primeros procesos a automatizar y maximizar el ROI de tu inversión tecnológica.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-date">5 Dic 2024</div>
+                            <h3 class="blog-title">Cloud vs On-Premise: Qué Opción Conviene a tu PYME</h3>
+                            <p class="blog-excerpt">Analizamos las ventajas y desventajas de cada opción para ayudarte a tomar la mejor decisión para tu negocio.</p>
+                        </div>
+                    </article>
+                    
+                    <!-- NUEVA CUARTA CARD -->
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-date">1 Dic 2024</div>
+                            <h3 class="blog-title">Big Data para PYMEs: Extraer Valor de tus Datos</h3>
+                            <p class="blog-excerpt">Aprende cómo las pequeñas empresas pueden aprovechar el análisis de datos para obtener insights valiosos sin grandes inversiones.</p>
+                        </div>
+                    </article>
+                </div>
             </div>
         </div>
     </section>
@@ -1556,6 +1661,35 @@
         document.querySelector('.projects-grid')?.addEventListener('scroll', () => {
             setTimeout(updateIndicators, 100);
         });
+
+        // ========== JAVASCRIPT DEL CARRUSEL DE BLOG ==========
+        function scrollBlogCarousel(direction) {
+            const carousel = document.querySelector('.blog-grid');
+            const cards = document.querySelectorAll('.blog-card');
+            
+            if (cards.length === 0) return;
+            
+            // Calcular el ancho de una tarjeta más el gap
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 32; // 2rem = 32px
+            const moveDistance = cardWidth + gap;
+            
+            // Calcular posición actual y nueva
+            const currentScroll = carousel.scrollLeft;
+            const currentIndex = Math.round(currentScroll / moveDistance);
+            let newIndex = currentIndex + direction;
+            
+            // Limitar índices (máximo 1 porque mostramos 3 de 4 cards)
+            newIndex = Math.max(0, Math.min(newIndex, 1));
+            
+            // Calcular posición exacta
+            const newPosition = newIndex * moveDistance;
+            
+            carousel.scrollTo({
+                left: newPosition,
+                behavior: 'smooth'
+            });
+        }
     </script>
 </body>
 </html>
