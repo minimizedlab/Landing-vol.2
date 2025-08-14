@@ -890,7 +890,7 @@
             box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
         }
 
-        /* Modal personalizado para Calendly */
+        /* Modal personalizado para Calendly - MEJORADO PARA SAFARI */
         .custom-calendly-modal {
             display: none;
             position: fixed;
@@ -915,21 +915,51 @@
             background: #000;
             border: 3px solid #FFD700;
             border-radius: 20px;
-            padding: 20px;
-            max-width: 90%;
-            max-height: 90%;
+            padding: 15px;
+            width: 90%;
+            height: 85vh;
+            max-width: 800px;
             box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Contenedor específico para el widget - COMPATIBLE SAFARI */
+        .calendly-widget-container {
+            flex: 1;
+            min-height: 0; /* Importante para Safari */
+            overflow: hidden;
+        }
+
+        /* Personalizar scroll del widget de Calendly con color dorado */
+        .calendly-widget-container ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .calendly-widget-container ::-webkit-scrollbar-track {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .calendly-widget-container ::-webkit-scrollbar-thumb {
+            background: #FFD700;
+            border-radius: 4px;
+        }
+
+        .calendly-widget-container ::-webkit-scrollbar-thumb:hover {
+            background: #FFA500;
         }
 
         .calendly-close-btn {
             position: absolute;
-            top: -15px;
-            right: -15px;
+            top: 5px;
+            right: 5px;
             background: #FFD700;
             color: #000;
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             font-size: 20px;
             font-weight: bold;
@@ -939,6 +969,7 @@
             justify-content: center;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+z-index:10;
         }
 
         .calendly-close-btn:hover {
@@ -1170,10 +1201,10 @@
                 gap: 2rem;
             }
 
-            /* Modal responsive */
+            /* Modal responsive mejorado para Safari */
             .calendly-modal-content {
                 width: 95%;
-                height: 95%;
+                height: 90vh;
                 padding: 10px;
             }
         }
@@ -1557,13 +1588,15 @@
         </div>
     </footer>
 
-    <!-- Modal personalizado para Calendly -->
+    <!-- Modal personalizado para Calendly - MEJORADO COMPATIBILIDAD SAFARI -->
     <div id="customCalendlyModal" class="custom-calendly-modal">
         <div class="calendly-modal-content">
             <button class="calendly-close-btn" onclick="closeCalendlyModal()">&times;</button>
-            <div class="calendly-inline-widget" 
-                 data-url="https://calendly.com/hello-minimais/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=ffffff&primary_color=FFD700" 
-                 style="min-width:320px;height:700px;">
+            <div class="calendly-widget-container">
+                <div class="calendly-inline-widget" 
+                     data-url="https://calendly.com/hello-minimais/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=ffffff&primary_color=FFD700" 
+                     style="min-width:320px;height:100%;width:100%;">
+                </div>
             </div>
         </div>
     </div>
