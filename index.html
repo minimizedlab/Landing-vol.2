@@ -34,6 +34,9 @@
     
     <!-- External Resources -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Calendly inline widget script -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
         
 </head>
     <style>
@@ -879,11 +882,73 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            cursor: pointer;
         }
 
         .calendly-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Modal personalizado para Calendly */
+        .custom-calendly-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            backdrop-filter: blur(5px);
+        }
+
+        .custom-calendly-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .calendly-modal-content {
+            position: relative;
+            background: #000;
+            border: 3px solid #FFD700;
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
+        }
+
+        .calendly-close-btn {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: #FFD700;
+            color: #000;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .calendly-close-btn:hover {
+            background: #FFA500;
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* Footer con columnas ajustadas */
@@ -1104,6 +1169,13 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
             }
+
+            /* Modal responsive */
+            .calendly-modal-content {
+                width: 95%;
+                height: 95%;
+                padding: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1217,7 +1289,7 @@
             
             <!-- Botones CTA centrados -->
             <div class="hero-buttons">
-                <a href="#contacto" class="cta-button">Consulta gratuita</a>
+                <a href="#" onclick="openCalendlyModal()" class="cta-button">Consulta gratuita</a>
                 <a href="#servicios" class="cta-button-secondary">Descubrir soluciones</a>
             </div>
             
@@ -1439,7 +1511,7 @@
         <div class="container">
             <h2>¿Listo para Escalar tu Negocio?</h2>
             <p>Agenda una consulta gratuita y descubre cómo podemos ayudarte a alcanzar tus objetivos</p>
-            <a href="https://calendly.com/tu-usuario" class="calendly-button" target="_blank">
+            <a href="#" onclick="openCalendlyModal()" class="calendly-button">
                 <i class="fas fa-calendar-alt"></i> Agendar Consulta Gratuita
             </a>
         </div>
@@ -1484,6 +1556,17 @@
             <p>© 2024 Minimais. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- Modal personalizado para Calendly -->
+    <div id="customCalendlyModal" class="custom-calendly-modal">
+        <div class="calendly-modal-content">
+            <button class="calendly-close-btn" onclick="closeCalendlyModal()">&times;</button>
+            <div class="calendly-inline-widget" 
+                 data-url="https://calendly.com/hello-minimais/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=ffffff&primary_color=FFD700" 
+                 style="min-width:320px;height:700px;">
+            </div>
+        </div>
+    </div>
 
     <script>
         // Mobile Menu Toggle con menú lateral corregido
@@ -1695,6 +1778,33 @@
                 behavior: 'smooth'
             });
         }
+
+        // Funciones para el modal de Calendly
+        function openCalendlyModal() {
+            const modal = document.getElementById('customCalendlyModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll del fondo
+        }
+
+        function closeCalendlyModal() {
+            const modal = document.getElementById('customCalendlyModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+        }
+
+        // Cerrar modal al hacer clic fuera del contenido
+        document.getElementById('customCalendlyModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCalendlyModal();
+            }
+        });
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCalendlyModal();
+            }
+        });
     </script>
 </body>
 </html>
