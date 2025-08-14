@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -38,8 +37,8 @@
     <!-- Calendly inline widget script -->
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
         
-</head>
     <style>
+        /* ========== RESET Y BASE ========== */
         * {
             margin: 0;
             padding: 0;
@@ -53,9 +52,25 @@
             background: #fff;
         }
 
-        /* Header */
+        /* ========== VARIABLES CSS PARA CONSISTENCIA ========== */
+        :root {
+            --primary-gold: #FFD700;
+            --primary-orange: #FFA500;
+            --primary-black: #000;
+            --secondary-black: #1a1a1a;
+            --text-gray: #666;
+            --light-gray: #f8f9fa;
+            --border-radius: 20px;
+            --transition: all 0.3s ease;
+            --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --gold-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            --gold-shadow-hover: 0 6px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        /* ========== HEADER Y NAVEGACIÓN ========== */
         .header {
-            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-black) 100%);
             color: #fff;
             padding: 1rem 0;
             position: fixed;
@@ -79,12 +94,12 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #FFD700;
+            color: var(--primary-gold);
             text-decoration: none;
             margin-left: -6rem;
         }
 
-        /* Menú lateral - desde la izquierda */
+        /* Menú lateral optimizado */
         .nav-menu {
             position: fixed;
             top: 0;
@@ -114,7 +129,7 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 1.1rem;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             padding: 1rem 0;
             border-bottom: 1px solid rgba(255, 215, 0, 0.15);
             position: relative;
@@ -126,22 +141,21 @@
         }
 
         .nav-menu a:hover {
-            color: #FFD700;
+            color: var(--primary-gold);
             padding-left: 1rem;
             transform: translateX(-5px);
         }
 
-        /* Botón de cerrar mejorado */
         .close-menu {
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
             background: rgba(255, 215, 0, 0.1);
             border: 1px solid rgba(255, 215, 0, 0.3);
-            color: #FFD700;
+            color: var(--primary-gold);
             font-size: 1.5rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             width: 40px;
             height: 40px;
             display: flex;
@@ -153,12 +167,11 @@
 
         .close-menu:hover {
             background: rgba(255, 215, 0, 0.2);
-            color: #FFA500;
+            color: var(--primary-orange);
             transform: rotate(90deg) scale(1.1);
-            border-color: #FFD700;
+            border-color: var(--primary-gold);
         }
 
-        /* Overlay mejorado */
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -188,7 +201,6 @@
             transition: opacity 0.3s ease;
         }
 
-        /* Hamburguesa se atenúa cuando el menú está activo */
         .hamburger.active {
             opacity: 0;
         }
@@ -196,14 +208,14 @@
         .hamburger span {
             width: 25px;
             height: 3px;
-            background: #FFD700;
+            background: var(--primary-gold);
             margin: 3px 0;
             transition: 0.3s;
         }
 
-        /* Hero Section */
+        /* ========== HERO SECTION ========== */
         .hero {
-            background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #000 100%);
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-black) 50%, var(--primary-black) 100%);
             color: #fff;
             min-height: 100vh;
             display: flex;
@@ -222,49 +234,11 @@
             z-index: 2;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 2.5rem;
-            line-height: 1.2;
-        }
-
-        .hero .highlight {
-            color: #FFD700;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            color: #000;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
-        }
-
-        /* Nuevo Hero Badge */
         .hero-badge {
             display: inline-block;
             background: rgba(255, 215, 0, 0.1);
             border: 1px solid rgba(255, 215, 0, 0.3);
-            color: #FFD700;
+            color: var(--primary-gold);
             padding: 10px 20px;
             border-radius: 50px;
             font-size: 0.9rem;
@@ -277,96 +251,101 @@
         .hero-badge i {
             margin-right: 8px;
         }
-        
-        /* Efecto pulse para el texto destacado */
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            line-height: 1.2;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .hero .highlight {
+            color: var(--primary-gold);
+        }
+
         .pulse-effect {
             animation: pulse 2s infinite;
         }
-        
-        @keyframes pulse {
-            0% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.8;
-            }
-            100% {
-                opacity: 1;
-            }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.6s both;
         }
-        
-        /* Contenedor de botones mejorado */
+
         .hero-buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 1rem;
             margin-bottom: 4rem;
+            animation: slideInUp 1s ease-out 0.9s both;
         }
-        
-        @media (min-width: 640px) {
-            .hero-buttons {
-                flex-direction: row;
-                justify-content: center;
-                gap: 1.5rem;
-            }
-        }
-        
-        /* Botón secundario */
+
+        /* Botones CTA unificados */
+        .cta-button,
         .cta-button-secondary {
             display: inline-block;
-            background: transparent;
-            color: #fff;
             padding: 15px 30px;
             text-decoration: none;
             font-weight: 600;
             border-radius: 50px;
-            border: 2px solid rgba(255, 215, 0, 0.4);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            transition: var(--transition);
             min-width: 200px;
             text-align: center;
         }
-        
+
+        .cta-button {
+            background: linear-gradient(45deg, var(--primary-gold), var(--primary-orange));
+            color: var(--primary-black);
+            box-shadow: var(--gold-shadow);
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover,
+        .cta-button-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-button:hover {
+            box-shadow: var(--gold-shadow-hover);
+        }
+
         .cta-button-secondary:hover {
             background: rgba(255, 215, 0, 0.1);
-            border-color: #FFD700;
-            transform: translateY(-2px);
+            border-color: var(--primary-gold);
             box-shadow: 0 6px 25px rgba(255, 215, 0, 0.2);
         }
-        
-        /* Mejorar botón primario para consistencia */
-        .cta-button {
-            min-width: 200px;
-            text-align: center;
-            animation: slideInUp 1s ease-out;
-        }
-        
-        /* Indicador de scroll */
+
         .scroll-indicator {
             display: none;
             justify-content: center;
             animation: bounce 2s infinite;
         }
         
-        @media (min-width: 768px) {
-            .scroll-indicator {
-                display: flex;
-            }
-        }
-        
         .scroll-indicator a {
-            color: #FFD700;
+            color: var(--primary-gold);
             font-size: 2rem;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         
         .scroll-indicator a:hover {
-            color: #FFA500;
+            color: var(--primary-orange);
             transform: scale(1.1);
         }
-        
-        /* Animaciones de entrada */
+
+        /* ========== ANIMACIONES ========== */
         @keyframes slideInDown {
             from {
                 opacity: 0;
@@ -400,45 +379,22 @@
                 transform: translateY(-5px);
             }
         }
-        
-        /* Ajustes responsivos para el nuevo hero */
-        .hero h1 {
-            animation: slideInUp 1s ease-out 0.3s both;
-        }
-        
-        .hero p {
-            animation: slideInUp 1s ease-out 0.6s both;
-        }
-        
-        .hero-buttons {
-            animation: slideInUp 1s ease-out 0.9s both;
-        }
-        
-        /* Mejoras móviles */
-        @media (max-width: 768px) {
-            .hero-badge {
-                font-size: 0.8rem;
-                padding: 8px 16px;
-                margin-bottom: 1.5rem;
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
             }
-            
-            .cta-button,
-            .cta-button-secondary {
-                width: 100%;
-                max-width: 280px;
-            }
-            
-            .hero-buttons {
-                margin-bottom: 2rem;
+            50% {
+                opacity: 0.8;
             }
         }
 
-        /* Services Section */
-        .services {
-            padding: 100px 0;
-            background: #f8f9fa;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
+        /* ========== SECCIONES COMUNES ========== */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -454,14 +410,20 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #000;
+            color: var(--primary-black);
         }
 
         .section-title p {
             font-size: 1.2rem;
-            color: #666;
+            color: var(--text-gray);
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        /* ========== SERVICES SECTION ========== */
+        .services {
+            padding: 100px 0;
+            background: var(--light-gray);
         }
 
         .services-grid {
@@ -474,52 +436,51 @@
         .service-card {
             background: #fff;
             padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
             text-align: left;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             border: 2px solid transparent;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            border-color: #FFD700;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-gold);
+            box-shadow: var(--shadow-hover);
         }
 
         .service-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
+            background: linear-gradient(45deg, var(--primary-gold), var(--primary-orange));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
             font-size: 2rem;
-            color: #000;
+            color: var(--primary-black);
         }
 
         .service-card h3 {
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #000;
+            color: var(--primary-black);
         }
 
         .service-card p {
-            color: #666;
+            color: var(--text-gray);
             line-height: 1.6;
             text-align: left;
         }
 
-        /* Projects Section */
+        /* ========== PROJECTS SECTION ========== */
         .projects {
             padding: 100px 0;
             background: #fff;
         }
 
-        /* Carrusel de proyectos */
         .projects-container {
             position: relative;
         }
@@ -533,7 +494,7 @@
             padding-bottom: 1rem;
             scroll-behavior: smooth;
             scrollbar-width: thin;
-            scrollbar-color: #FFD700 #f1f1f1;
+            scrollbar-color: var(--primary-gold) #f1f1f1;
         }
 
         .projects-grid::-webkit-scrollbar {
@@ -546,20 +507,20 @@
         }
 
         .projects-grid::-webkit-scrollbar-thumb {
-            background: #FFD700;
+            background: var(--primary-gold);
             border-radius: 4px;
         }
 
         .projects-grid::-webkit-scrollbar-thumb:hover {
-            background: #FFA500;
+            background: var(--primary-orange);
         }
 
         .project-card {
-            background: #f8f9fa;
-            border-radius: 20px;
+            background: var(--light-gray);
+            border-radius: var(--border-radius);
             padding: 2rem;
             border: 2px solid transparent;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
             min-width: calc((100% - 2rem) / 2);
@@ -573,21 +534,23 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
+            background: linear-gradient(45deg, var(--primary-gold), var(--primary-orange));
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            border-color: #FFD700;
+            border-color: var(--primary-gold);
             box-shadow: 0 15px 35px rgba(255, 215, 0, 0.15);
         }
 
-        .carousel-nav {
+        /* Navegación del carrusel unificada */
+        .carousel-nav,
+        .blog-carousel-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             background: rgba(0, 0, 0, 0.8);
-            color: #FFD700;
+            color: var(--primary-gold);
             border: none;
             width: 50px;
             height: 50px;
@@ -595,19 +558,22 @@
             cursor: pointer;
             font-size: 1.5rem;
             z-index: 10;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
-        .carousel-nav:hover {
+        .carousel-nav:hover,
+        .blog-carousel-nav:hover {
             background: rgba(0, 0, 0, 0.9);
-            color: #FFA500;
+            color: var(--primary-orange);
         }
 
-        .carousel-prev {
+        .carousel-prev,
+        .blog-carousel-prev {
             left: -25px;
         }
 
-        .carousel-next {
+        .carousel-next,
+        .blog-carousel-next {
             right: -25px;
         }
 
@@ -621,18 +587,18 @@
         .project-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
+            background: linear-gradient(45deg, var(--primary-gold), var(--primary-orange));
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #000;
+            color: var(--primary-black);
             font-size: 1.5rem;
         }
 
         .project-category {
-            background: #000;
-            color: #FFD700;
+            background: var(--primary-black);
+            color: var(--primary-gold);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.85rem;
@@ -643,11 +609,11 @@
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #000;
+            color: var(--primary-black);
         }
 
         .project-content p {
-            color: #666;
+            color: var(--text-gray);
             line-height: 1.6;
             margin-bottom: 1.5rem;
         }
@@ -659,7 +625,7 @@
         }
 
         .tech-tag {
-            background: #000;
+            background: var(--primary-black);
             color: #fff;
             padding: 0.25rem 0.75rem;
             border-radius: 15px;
@@ -667,14 +633,28 @@
             font-weight: 500;
         }
 
-        /* Indicadores de navegación (puntos) - Solo móvil */
         .projects-indicators {
             display: none;
         }
 
+        .indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .indicator-dot.active {
+            background: var(--primary-gold);
+            transform: scale(1.2);
+        }
+
+        /* ========== ABOUT SECTION ========== */
         .about {
             padding: 100px 0;
-            background: #000;
+            background: var(--primary-black);
             color: #fff;
         }
 
@@ -689,7 +669,7 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            color: #FFD700;
+            color: var(--primary-gold);
             white-space: nowrap;
             line-height: 1.1;
         }
@@ -701,7 +681,7 @@
         }
 
         .about-text .highlight {
-            color: #FFD700;
+            color: var(--primary-gold);
             font-weight: 700;
         }
 
@@ -723,7 +703,7 @@
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #FFD700;
+            color: var(--primary-gold);
             display: block;
         }
 
@@ -732,13 +712,12 @@
             font-size: 0.9rem;
         }
 
-        /* ========== BLOG SECTION CON CARRUSEL ========== */
+        /* ========== BLOG SECTION ========== */
         .blog {
             padding: 100px 0;
-            background: #f8f9fa;
+            background: var(--light-gray);
         }
 
-        /* Contenedor del carrusel de blog */
         .blog-container {
             position: relative;
         }
@@ -752,7 +731,7 @@
             padding-bottom: 1rem;
             scroll-behavior: smooth;
             scrollbar-width: thin;
-            scrollbar-color: #FFD700 #f1f1f1;
+            scrollbar-color: var(--primary-gold) #f1f1f1;
         }
 
         .blog-grid::-webkit-scrollbar {
@@ -765,67 +744,37 @@
         }
 
         .blog-grid::-webkit-scrollbar-thumb {
-            background: #FFD700;
+            background: var(--primary-gold);
             border-radius: 4px;
         }
 
         .blog-grid::-webkit-scrollbar-thumb:hover {
-            background: #FFA500;
+            background: var(--primary-orange);
         }
 
         .blog-card {
             background: #fff;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            min-width: calc((100% - 4rem) / 3); /* Mostrar 3 cards */
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            min-width: calc((100% - 4rem) / 3);
             flex: 0 0 calc((100% - 4rem) / 3);
         }
 
         .blog-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Botones de navegación del carrusel de blog */
-        .blog-carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: #FFD700;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.5rem;
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-
-        .blog-carousel-nav:hover {
-            background: rgba(0, 0, 0, 0.9);
-            color: #FFA500;
-        }
-
-        .blog-carousel-prev {
-            left: -25px;
-        }
-
-        .blog-carousel-next {
-            right: -25px;
+            box-shadow: var(--shadow-hover);
         }
 
         .blog-image {
             height: 200px;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
+            background: linear-gradient(45deg, var(--primary-gold), var(--primary-orange));
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            color: #000;
+            color: var(--primary-black);
         }
 
         .blog-content {
@@ -833,7 +782,7 @@
         }
 
         .blog-date {
-            color: #666;
+            color: var(--text-gray);
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
         }
@@ -842,18 +791,18 @@
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #000;
+            color: var(--primary-black);
         }
 
         .blog-excerpt {
-            color: #666;
+            color: var(--text-gray);
             line-height: 1.6;
         }
 
-        /* Contact Section */
+        /* ========== CONTACT SECTION ========== */
         .contact {
             padding: 100px 0;
-            background: #000;
+            background: var(--primary-black);
             color: #fff;
             text-align: center;
         }
@@ -862,7 +811,7 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #FFD700;
+            color: var(--primary-gold);
         }
 
         .contact p {
@@ -873,24 +822,24 @@
 
         .calendly-button {
             display: inline-block;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            color: #000;
+            background: linear-gradient(45deg, var(--primary-gold), var(--primary-orange));
+            color: var(--primary-black);
             padding: 15px 30px;
             text-decoration: none;
             font-weight: 600;
             border-radius: 50px;
             font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            transition: var(--transition);
+            box-shadow: var(--gold-shadow);
             cursor: pointer;
         }
 
         .calendly-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
+            box-shadow: var(--gold-shadow-hover);
         }
 
-        /* Modal personalizado para Calendly - MEJORADO PARA SAFARI */
+        /* ========== MODAL CALENDLY ========== */
         .custom-calendly-modal {
             display: none;
             position: fixed;
@@ -912,9 +861,9 @@
 
         .calendly-modal-content {
             position: relative;
-            background: #000;
-            border: 3px solid #FFD700;
-            border-radius: 20px;
+            background: var(--primary-black);
+            border: 3px solid var(--primary-gold);
+            border-radius: var(--border-radius);
             padding: 15px;
             width: 90%;
             height: 85vh;
@@ -925,14 +874,12 @@
             flex-direction: column;
         }
 
-        /* Contenedor específico para el widget - COMPATIBLE SAFARI */
         .calendly-widget-container {
             flex: 1;
-            min-height: 0; /* Importante para Safari */
+            min-height: 0;
             overflow: hidden;
         }
 
-        /* Personalizar scroll del widget de Calendly con color dorado */
         .calendly-widget-container ::-webkit-scrollbar {
             width: 8px;
         }
@@ -943,20 +890,20 @@
         }
 
         .calendly-widget-container ::-webkit-scrollbar-thumb {
-            background: #FFD700;
+            background: var(--primary-gold);
             border-radius: 4px;
         }
 
         .calendly-widget-container ::-webkit-scrollbar-thumb:hover {
-            background: #FFA500;
+            background: var(--primary-orange);
         }
 
         .calendly-close-btn {
             position: absolute;
             top: 5px;
             right: 5px;
-            background: #FFD700;
-            color: #000;
+            background: var(--primary-gold);
+            color: var(--primary-black);
             border: none;
             width: 45px;
             height: 45px;
@@ -967,24 +914,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-z-index:10;
+            transition: var(--transition);
+            box-shadow: var(--gold-shadow);
+            z-index: 10;
         }
 
         .calendly-close-btn:hover {
-            background: #FFA500;
+            background: var(--primary-orange);
             transform: scale(1.1);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Footer con columnas ajustadas */
+        /* ========== FOOTER ========== */
         .footer {
-            background: #1a1a1a;
+            background: var(--secondary-black);
             color: #fff;
             padding: 4rem 0 2rem;
         }
@@ -1000,7 +942,7 @@ z-index:10;
         }
 
         .footer-section h3 {
-            color: #FFD700;
+            color: var(--primary-gold);
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
@@ -1019,7 +961,7 @@ z-index:10;
         }
 
         .footer-section a:hover {
-            color: #FFD700;
+            color: var(--primary-gold);
         }
 
         .social-links {
@@ -1037,18 +979,18 @@ z-index:10;
             background: rgba(255, 215, 0, 0.1);
             border: 1px solid rgba(255, 215, 0, 0.3);
             border-radius: 50%;
-            color: #FFD700;
-            transition: all 0.3s ease;
+            color: var(--primary-gold);
+            transition: var(--transition);
         }
 
         .social-links a:hover {
-            background: #FFD700;
-            color: #000;
+            background: var(--primary-gold);
+            color: var(--primary-black);
             transform: translateY(-2px);
         }
 
         .footer-section p i {
-            color: #FFD700;
+            color: var(--primary-gold);
             margin-right: 0.5rem;
             width: 16px;
         }
@@ -1061,9 +1003,23 @@ z-index:10;
             color: #888;
         }
 
-        /* Mobile Styles - MEJORADOS PARA PROYECTOS */
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (min-width: 640px) {
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .scroll-indicator {
+                display: flex;
+            }
+        }
+
         @media (max-width: 768px) {
-            /* Centrar todo el contenido en móviles */
+            /* Centrar contenido en móviles */
             .section-title,
             .service-card,
             .project-content,
@@ -1077,7 +1033,6 @@ z-index:10;
                 text-align: center;
             }
 
-            /* Centrar iconos de redes sociales */
             .social-links {
                 justify-content: center;
             }
@@ -1109,6 +1064,22 @@ z-index:10;
                 font-size: 1.1rem;
             }
 
+            .hero-badge {
+                font-size: 0.8rem;
+                padding: 8px 16px;
+                margin-bottom: 1.5rem;
+            }
+            
+            .cta-button,
+            .cta-button-secondary {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .hero-buttons {
+                margin-bottom: 2rem;
+            }
+
             .services-grid {
                 grid-template-columns: 1fr;
             }
@@ -1126,18 +1097,12 @@ z-index:10;
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .project-results {
-                grid-template-columns: 1fr;
-                gap: 0.5rem;
-            }
-
-            /* PROYECTOS MÓVIL - UNA CARD COMPLETA */
+            /* Proyectos móvil - una card completa */
             .project-card {
                 min-width: calc(100vw - 4rem);
                 flex: 0 0 calc(100vw - 4rem);
             }
             
-            /* Flechas más pequeñas pero visibles */
             .carousel-nav {
                 width: 40px;
                 height: 40px;
@@ -1153,29 +1118,14 @@ z-index:10;
                 right: 10px;
             }
             
-            /* Mostrar indicadores de puntos */
             .projects-indicators {
                 display: flex;
                 justify-content: center;
                 gap: 8px;
                 margin-top: 2rem;
             }
-            
-            .indicator-dot {
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background: #ccc;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-            
-            .indicator-dot.active {
-                background: #FFD700;
-                transform: scale(1.2);
-            }
 
-            /* ========== BLOG MÓVIL ========== */
+            /* Blog móvil */
             .blog-card {
                 min-width: calc(100% - 2rem);
                 flex: 0 0 calc(100% - 2rem);
@@ -1195,13 +1145,11 @@ z-index:10;
                 right: 10px;
             }
 
-            /* Footer móvil */
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
             }
 
-            /* Modal responsive mejorado para Safari */
             .calendly-modal-content {
                 width: 90%;
                 height: 80vh;
@@ -1244,7 +1192,6 @@ z-index:10;
                 grid-template-columns: 1fr;
             }
 
-            /* PROYECTOS MÓVIL PEQUEÑO */
             .project-card {
                 min-width: calc(100vw - 2rem);
                 flex: 0 0 calc(100vw - 2rem);
@@ -1256,7 +1203,6 @@ z-index:10;
                 font-size: 1rem;
             }
 
-            /* ========== BLOG MÓVIL PEQUEÑO ========== */
             .blog-card {
                 min-width: calc(100vw - 2rem);
                 flex: 0 0 calc(100vw - 2rem);
@@ -1273,7 +1219,6 @@ z-index:10;
                 right: -100%;
             }
 
-            /* Footer muy pequeño */
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -1306,25 +1251,20 @@ z-index:10;
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <!-- Badge superior -->
             <span class="hero-badge">
                 <i class="fas fa-rocket"></i>
                 Transformación digital para PYMEs
             </span>
             
-            <!-- Título principal -->
             <h1>Impulsamos la <br><span class="highlight pulse-effect">eficiencia</span> de tu negocio</h1>
             
-            <!-- Descripción -->
             <p>Diagnosticamos, optimizamos y transformamos operaciones empresariales con soluciones tecnológicas adaptadas a cada PYME.</p>
             
-            <!-- Botones CTA centrados -->
             <div class="hero-buttons">
                 <a href="#" onclick="openCalendlyModal()" class="cta-button">Consulta gratuita</a>
                 <a href="#servicios" class="cta-button-secondary">Descubrir soluciones</a>
             </div>
             
-            <!-- Flecha de scroll -->
             <div class="scroll-indicator">
                 <a href="#servicios" aria-label="Ver servicios">
                     <i class="fas fa-chevron-down"></i>
@@ -1366,7 +1306,7 @@ z-index:10;
         </div>
     </section>
 
-    <!-- Projects Section con Carrusel MEJORADO -->
+    <!-- Projects Section -->
     <section id="proyectos" class="projects">
         <div class="container">
             <div class="section-title">
@@ -1414,7 +1354,7 @@ z-index:10;
                             <span class="tech-tag">E-Commerce</span>
                         </div>
                     </div>
-
+                    
                     <div class="project-card">
                         <div class="project-header">
                             <div class="project-icon">
@@ -1434,7 +1374,6 @@ z-index:10;
                     </div>
                 </div>
                 
-                <!-- Indicadores solo para móvil -->
                 <div class="projects-indicators">
                     <span class="indicator-dot active" onclick="goToSlide(0)"></span>
                     <span class="indicator-dot" onclick="goToSlide(1)"></span>
@@ -1444,6 +1383,7 @@ z-index:10;
         </div>
     </section>
 
+    <!-- About Section -->
     <section id="nosotros" class="about">
         <div class="container">
             <div class="about-content">
@@ -1475,7 +1415,7 @@ z-index:10;
         </div>
     </section>
 
-    <!-- Blog Section CON CARRUSEL -->
+    <!-- Blog Section -->
     <section id="blog" class="blog">
         <div class="container">
             <div class="section-title">
@@ -1521,7 +1461,6 @@ z-index:10;
                         </div>
                     </article>
                     
-                    <!-- NUEVA CUARTA CARD -->
                     <article class="blog-card">
                         <div class="blog-image">
                             <i class="fas fa-database"></i>
@@ -1548,7 +1487,7 @@ z-index:10;
         </div>
     </section>
 
-    <!-- Footer con columnas ajustadas -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -1588,7 +1527,7 @@ z-index:10;
         </div>
     </footer>
 
-    <!-- Modal personalizado para Calendly - MEJORADO COMPATIBILIDAD SAFARI -->
+    <!-- Modal Calendly -->
     <div id="customCalendlyModal" class="custom-calendly-modal">
         <div class="calendly-modal-content">
             <button class="calendly-close-btn" onclick="closeCalendlyModal()">&times;</button>
@@ -1602,50 +1541,42 @@ z-index:10;
     </div>
 
     <script>
-        // Mobile Menu Toggle con menú lateral corregido
+        // ========== MENÚ MÓVIL ==========
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         const menuOverlay = document.querySelector('.menu-overlay');
         const closeMenu = document.querySelector('.close-menu');
 
-        // Abrir menú
-        hamburger.addEventListener('click', () => {
+        function toggleMenu() {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
             menuOverlay.classList.toggle('active');
-        });
+        }
 
-        // Cerrar menú con la cruz
-        closeMenu.addEventListener('click', () => {
+        function closeMenuHandler() {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
             menuOverlay.classList.remove('active');
+        }
+
+        // Event listeners optimizados
+        hamburger.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', closeMenuHandler);
+        menuOverlay.addEventListener('click', closeMenuHandler);
+
+        // Cerrar menú al hacer clic en enlaces
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', closeMenuHandler);
         });
 
-        // Cerrar menú cuando hace click en el overlay
-        menuOverlay.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-        });
-
-        // Cerrar menú cuando hace click en cualquier enlace
-        document.querySelectorAll('.nav-menu a').forEach(n => n.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-        }));
-
-        // Cerrar menú cuando hace click fuera del menú (pero no en overlay, para evitar duplicados)
+        // Cerrar menú al hacer clic fuera
         document.addEventListener('click', (e) => {
             if (!hamburger.contains(e.target) && !navMenu.contains(e.target) && !menuOverlay.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                menuOverlay.classList.remove('active');
+                closeMenuHandler();
             }
         });
 
-        // Smooth scrolling for anchor links
+        // ========== SMOOTH SCROLLING ==========
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1659,7 +1590,7 @@ z-index:10;
             });
         });
 
-        // Add scroll effect to header
+        // ========== HEADER SCROLL EFFECT ==========
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
             if (window.scrollY > 100) {
@@ -1671,7 +1602,7 @@ z-index:10;
             }
         });
 
-        // Animate stats on scroll
+        // ========== ANIMACIÓN DE ESTADÍSTICAS ==========
         const observerOptions = {
             threshold: 0.7,
             rootMargin: '0px 0px -100px 0px'
@@ -1682,7 +1613,6 @@ z-index:10;
                 if (entry.isIntersecting) {
                     const statNumbers = entry.target.querySelectorAll('.stat-number');
                     statNumbers.forEach(stat => {
-                        const finalNumber = stat.textContent;
                         stat.style.opacity = '1';
                         stat.style.transform = 'translateY(0)';
                     });
@@ -1695,27 +1625,23 @@ z-index:10;
             observer.observe(statsSection);
         }
 
-        // ✅ JAVASCRIPT CORREGIDO - CENTRADO PERFECTO DE TARJETAS
+        // ========== CARRUSEL DE PROYECTOS ==========
         function scrollCarousel(direction) {
             const carousel = document.querySelector('.projects-grid');
             const cards = document.querySelectorAll('.project-card');
             
             if (cards.length === 0) return;
             
-            // Calcular el ancho de una tarjeta más el gap
             const cardWidth = cards[0].offsetWidth;
-            const gap = 32; // 2rem = 32px
+            const gap = 32; // 2rem
             const moveDistance = cardWidth + gap;
             
-            // Calcular posición actual y nueva
             const currentScroll = carousel.scrollLeft;
             const currentIndex = Math.round(currentScroll / moveDistance);
             let newIndex = currentIndex + direction;
             
-            // Limitar índices
             newIndex = Math.max(0, Math.min(newIndex, cards.length - 1));
             
-            // Calcular posición exacta para centrar la tarjeta
             const newPosition = newIndex * moveDistance;
             
             carousel.scrollTo({
@@ -1723,23 +1649,18 @@ z-index:10;
                 behavior: 'smooth'
             });
             
-            // Actualizar indicadores
             setTimeout(() => updateIndicators(newIndex), 300);
         }
 
-        // Función para ir a una diapositiva específica - MEJORADA
         function goToSlide(index) {
             const carousel = document.querySelector('.projects-grid');
             const cards = document.querySelectorAll('.project-card');
             
             if (cards.length === 0) return;
             
-            // Calcular el ancho de una tarjeta más el gap
             const cardWidth = cards[0].offsetWidth;
-            const gap = 32; // 2rem = 32px
+            const gap = 32;
             const moveDistance = cardWidth + gap;
-            
-            // Calcular posición exacta
             const newPosition = index * moveDistance;
             
             carousel.scrollTo({
@@ -1747,11 +1668,9 @@ z-index:10;
                 behavior: 'smooth'
             });
             
-            // Actualizar indicadores
             updateIndicators(index);
         }
 
-        // Función para actualizar los indicadores
         function updateIndicators(activeIndex = null) {
             const indicators = document.querySelectorAll('.indicator-dot');
             if (indicators.length === 0) return;
@@ -1761,7 +1680,6 @@ z-index:10;
                     dot.classList.toggle('active', index === activeIndex);
                 });
             } else {
-                // Calcular qué indicador debería estar activo basado en scroll position
                 const carousel = document.querySelector('.projects-grid');
                 const cards = document.querySelectorAll('.project-card');
                 
@@ -1778,32 +1696,28 @@ z-index:10;
             }
         }
 
-        // Actualizar indicadores cuando se hace scroll manual
+        // Actualizar indicadores al hacer scroll manual
         document.querySelector('.projects-grid')?.addEventListener('scroll', () => {
             setTimeout(updateIndicators, 100);
         });
 
-        // ========== JAVASCRIPT DEL CARRUSEL DE BLOG ==========
+        // ========== CARRUSEL DE BLOG ==========
         function scrollBlogCarousel(direction) {
             const carousel = document.querySelector('.blog-grid');
             const cards = document.querySelectorAll('.blog-card');
             
             if (cards.length === 0) return;
             
-            // Calcular el ancho de una tarjeta más el gap
             const cardWidth = cards[0].offsetWidth;
-            const gap = 32; // 2rem = 32px
+            const gap = 32;
             const moveDistance = cardWidth + gap;
             
-            // Calcular posición actual y nueva
             const currentScroll = carousel.scrollLeft;
             const currentIndex = Math.round(currentScroll / moveDistance);
             let newIndex = currentIndex + direction;
             
-            // Limitar índices (máximo 1 porque mostramos 3 de 4 cards)
-            newIndex = Math.max(0, Math.min(newIndex, 1));
+            newIndex = Math.max(0, Math.min(newIndex, 1)); // Máximo 1 para mostrar 3 de 4 cards
             
-            // Calcular posición exacta
             const newPosition = newIndex * moveDistance;
             
             carousel.scrollTo({
@@ -1812,20 +1726,20 @@ z-index:10;
             });
         }
 
-        // Funciones para el modal de Calendly
+        // ========== MODAL CALENDLY ==========
         function openCalendlyModal() {
             const modal = document.getElementById('customCalendlyModal');
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevenir scroll del fondo
+            document.body.style.overflow = 'hidden';
         }
 
         function closeCalendlyModal() {
             const modal = document.getElementById('customCalendlyModal');
             modal.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restaurar scroll
+            document.body.style.overflow = 'auto';
         }
 
-        // Cerrar modal al hacer clic fuera del contenido
+        // Cerrar modal al hacer clic fuera
         document.getElementById('customCalendlyModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeCalendlyModal();
