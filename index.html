@@ -770,6 +770,7 @@
             transition: var(--transition);
             min-width: calc((100% - 4rem) / 3);
             flex: 0 0 calc((100% - 4rem) / 3);
+            cursor: pointer;
         }
 
         .blog-card:hover {
@@ -1437,8 +1438,8 @@
                 <button class="blog-carousel-nav blog-carousel-prev" onclick="scrollBlogCarousel(-1)">‹</button>
                 <button class="blog-carousel-nav blog-carousel-next" onclick="scrollBlogCarousel(1)">›</button>
                 
-                <a href="articulo-automatizacion-ahorro-pymes.html" class="blog-card">
-                    <article class="blog-card">
+                <div class="blog-grid">
+                    <article class="blog-card" onclick="window.location.href='articulo-kpis-esenciales-pyme.html'">
                         <div class="blog-image">
                             <i class="fas fa-chart-bar"></i>
                         </div>
@@ -1449,7 +1450,7 @@
                         </div>
                     </article>
                     
-                    <article class="blog-card">
+                    <article class="blog-card" onclick="window.location.href='articulo-automatizacion-ahorro-pymes.html'">
                         <div class="blog-image">
                             <i class="fas fa-robot"></i>
                         </div>
@@ -1460,7 +1461,7 @@
                         </div>
                     </article>
                     
-                    <article class="blog-card">
+                    <article class="blog-card" onclick="window.location.href='articulo-cloud-vs-onpremise.html'">
                         <div class="blog-image">
                             <i class="fas fa-cloud"></i>
                         </div>
@@ -1471,7 +1472,7 @@
                         </div>
                     </article>
                     
-                    <article class="blog-card">
+                    <article class="blog-card" onclick="window.location.href='articulo-big-data-pymes.html'">
                         <div class="blog-image">
                             <i class="fas fa-database"></i>
                         </div>
