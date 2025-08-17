@@ -355,7 +355,7 @@
             box-shadow: var(--gold-shadow-hover);
         }
 
-        /* ========== SECCIÓN DE ARTÍCULOS RELACIONADOS ========== */
+        /* ========== SECCIÓN DE ARTÍCULOS RELACIONADOS CON CARRUSEL ========== */
         .related-articles {
             padding: 80px 0;
             background: var(--light-gray);
@@ -379,10 +379,67 @@
             color: var(--primary-black);
         }
 
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        .blog-container {
+            position: relative;
+        }
+
+        .blog-grid {
+            display: flex;
+            overflow-x: auto;
+            overflow-y: hidden;
             gap: 2rem;
+            margin-top: 3rem;
+            padding-bottom: 1rem;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-gold) #f1f1f1;
+        }
+
+        .blog-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .blog-grid::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .blog-grid::-webkit-scrollbar-thumb {
+            background: var(--primary-gold);
+            border-radius: 4px;
+        }
+
+        .blog-grid::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-orange);
+        }
+
+        .blog-carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--primary-gold);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+            transition: var(--transition);
+        }
+
+        .blog-carousel-nav:hover {
+            background: rgba(0, 0, 0, 0.9);
+            color: var(--primary-orange);
+        }
+
+        .blog-carousel-prev {
+            left: -25px;
+        }
+
+        .blog-carousel-next {
+            right: -25px;
         }
 
         .article-card {
@@ -393,6 +450,8 @@
             transition: var(--transition);
             text-decoration: none;
             color: inherit;
+            min-width: calc((100% - 4rem) / 3);
+            flex: 0 0 calc((100% - 4rem) / 3);
         }
 
         .article-card:hover {
@@ -540,9 +599,24 @@
                 flex-direction: column;
                 gap: 0.5rem;
             }
+
+            .article-card {
+                min-width: calc(100% - 2rem);
+                flex: 0 0 calc(100% - 2rem);
+            }
             
-            .articles-grid {
-                grid-template-columns: 1fr;
+            .blog-carousel-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .blog-carousel-prev {
+                left: 10px;
+            }
+            
+            .blog-carousel-next {
+                right: 10px;
             }
 
             .footer-content {
@@ -567,6 +641,12 @@
 
             .section-title h2 {
                 font-size: 2rem;
+            }
+
+            .blog-carousel-nav {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
             }
 
             .footer-content {
@@ -719,7 +799,7 @@
         </div>
     </main>
 
-    <!-- ========== ARTÍCULOS RELACIONADOS ========== -->
+    <!-- ========== ARTÍCULOS RELACIONADOS CON CARRUSEL ========== -->
     <section class="related-articles">
         <div class="related-container">
             <div class="section-title">
@@ -727,39 +807,66 @@
                 <p>Continúa aprendiendo con nuestros recursos especializados</p>
             </div>
             
-            <div class="articles-grid">
-                <a href="articulo-kpis-esenciales-pyme.html" class="article-card">
-                    <div class="article-card-image">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div class="article-card-content">
-                        <div class="article-card-date">15 Dic 2024</div>
-                        <h3 class="article-card-title">5 KPIs Esenciales para Medir el Crecimiento de tu PYME</h3>
-                        <p class="article-card-excerpt">Descubre las métricas clave que toda empresa en crecimiento debe monitorear para tomar decisiones estratégicas basadas en datos.</p>
-                    </div>
-                </a>
+            <div class="blog-container">
+                <button class="blog-carousel-nav blog-carousel-prev" onclick="scrollBlogCarousel(-1)">‹</button>
+                <button class="blog-carousel-nav blog-carousel-next" onclick="scrollBlogCarousel(1)">›</button>
                 
-                <a href="articulo-cloud-vs-onpremise.html" class="article-card">
-                    <div class="article-card-image">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <div class="article-card-content">
-                        <div class="article-card-date">5 Dic 2024</div>
-                        <h3 class="article-card-title">Cloud vs On-Premise: Qué Opción Conviene a tu PYME</h3>
-                        <p class="article-card-excerpt">Analizamos las ventajas y desventajas de cada opción para ayudarte a tomar la mejor decisión para tu negocio.</p>
-                    </div>
-                </a>
-                
-                <a href="articulo-big-data-pymes.html" class="article-card">
-                    <div class="article-card-image">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <div class="article-card-content">
-                        <div class="article-card-date">1 Dic 2024</div>
-                        <h3 class="article-card-title">Big Data para PYMEs: Extraer Valor de tus Datos</h3>
-                        <p class="article-card-excerpt">Aprende cómo las pequeñas empresas pueden aprovechar el análisis de datos para obtener insights valiosos sin grandes inversiones.</p>
-                    </div>
-                </a>
+                <div class="blog-grid">
+                    <a href="articulo-kpis-esenciales-pyme.html" class="article-card">
+                        <div class="article-card-image">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="article-card-content">
+                            <div class="article-card-date">15 Dic 2024</div>
+                            <h3 class="article-card-title">5 KPIs Esenciales para Medir el Crecimiento de tu PYME</h3>
+                            <p class="article-card-excerpt">Descubre las métricas clave que toda empresa en crecimiento debe monitorear para tomar decisiones estratégicas basadas en datos.</p>
+                        </div>
+                    </a>
+                    
+                    <a href="articulo-cloud-vs-onpremise.html" class="article-card">
+                        <div class="article-card-image">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="article-card-content">
+                            <div class="article-card-date">5 Dic 2024</div>
+                            <h3 class="article-card-title">Cloud vs On-Premise: Qué Opción Conviene a tu PYME</h3>
+                            <p class="article-card-excerpt">Analizamos las ventajas y desventajas de cada opción para ayudarte a tomar la mejor decisión para tu negocio.</p>
+                            </div>
+                    </a>
+                    
+                    <a href="articulo-big-data-pymes.html" class="article-card">
+                        <div class="article-card-image">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="article-card-content">
+                            <div class="article-card-date">1 Dic 2024</div>
+                            <h3 class="article-card-title">Big Data para PYMEs: Extraer Valor de tus Datos</h3>
+                            <p class="article-card-excerpt">Aprende cómo las pequeñas empresas pueden aprovechar el análisis de datos para obtener insights valiosos sin grandes inversiones.</p>
+                        </div>
+                    </a>
+                    
+                    <a href="articulo-integracion-sistemas.html" class="article-card">
+                        <div class="article-card-image">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="article-card-content">
+                            <div class="article-card-date">25 Nov 2024</div>
+                            <h3 class="article-card-title">Integración de Sistemas: Conecta tu Ecosistema Digital</h3>
+                            <p class="article-card-excerpt">Descubre cómo conectar todas tus herramientas para crear un flujo de trabajo unificado y eficiente.</p>
+                        </div>
+                    </a>
+
+                    <a href="articulo-ia-para-pymes.html" class="article-card">
+                        <div class="article-card-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="article-card-content">
+                            <div class="article-card-date">20 Nov 2024</div>
+                            <h3 class="article-card-title">IA Práctica para PYMEs: Casos de Uso Reales</h3>
+                            <p class="article-card-excerpt">Ejemplos concretos de cómo la inteligencia artificial puede mejorar la eficiencia sin grandes inversiones.</p>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -857,6 +964,33 @@
                 header.style.backdropFilter = 'none';
             }
         });
+
+        // ========== CARRUSEL DE BLOG ==========
+        function scrollBlogCarousel(direction) {
+            const carousel = document.querySelector('.blog-grid');
+            const cards = document.querySelectorAll('.article-card');
+            
+            if (cards.length === 0) return;
+            
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 32; // 2rem
+            const moveDistance = cardWidth + gap;
+            
+            const currentScroll = carousel.scrollLeft;
+            const currentIndex = Math.round(currentScroll / moveDistance);
+            let newIndex = currentIndex + direction;
+            
+            // Ajustar límites
+            const maxIndex = Math.max(0, cards.length - Math.floor(carousel.offsetWidth / moveDistance));
+            newIndex = Math.max(0, Math.min(newIndex, maxIndex));
+            
+            const newPosition = newIndex * moveDistance;
+            
+            carousel.scrollTo({
+                left: newPosition,
+                behavior: 'smooth'
+            });
+        }
     </script>
 </body>
 </html>
