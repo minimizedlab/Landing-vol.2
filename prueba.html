@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBMRE297S7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VBMRE297S7');
+    </script>
+    <!-- SEO Meta Tags del artículo -->
+    <title>Los procesos que más tiempo hacen perder a una PYME (y cómo eliminarlos) | Minimais</title>
+    <meta name="description" content="Identifica los procesos que más horas consumen en tu empresa y aprende cómo eliminarlos con automatización para ganar eficiencia y reducir costes.">
+    <!-- Meta Tags adicionales -->
+    <meta name="keywords" content="procesos pymes, automatización empresa, ahorrar tiempo pyme, eliminar tareas repetitivas, consultoría de procesos">
+    <meta name="author" content="Minimais">
+    <meta name="robots" content="index, follow">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Los procesos que más tiempo hacen perder a una PYME (y cómo eliminarlos)">
+    <meta property="og:description" content="Identifica los procesos que más horas consumen en tu empresa y aprende cómo eliminarlos con automatización para ganar eficiencia y reducir costes.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://minimais.es/articulo-procesos-tiempo-pymes.html">
+    <meta property="og:image" content="https://minimais.es/og-image.jpg">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="Minimais">
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Los procesos que más tiempo hacen perder a una PYME (y cómo eliminarlos)">
+    <meta name="twitter:description" content="Identifica los procesos que más horas consumen en tu empresa y aprende cómo eliminarlos con automatización para ganar eficiencia y reducir costes.">
+    <meta name="twitter:image" content="https://minimais.es/og-image.jpg">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://minimais.es/articulo-procesos-tiempo-pymes.html">
+    <!-- External Resources -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #000; background: #fff; }
+        :root {
+            --primary-gold: #FFD700; --primary-orange: #FFA500; --primary-black: #000;
+            --secondary-black: #1a1a1a; --text-gray: #666; --light-gray: #f8f9fa;
+            --border-radius: 20px; --transition: all 0.3s ease;
+            --shadow-light: 0 10px 30px rgba(0,0,0,0.1); --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+            --gold-shadow: 0 4px 15px rgba(255,215,0,0.3); --gold-shadow-hover: 0 6px 25px rgba(255,215,0,0.4);
+        }
+        .header { background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-black) 100%);
+            color: #fff; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000;
+            box-shadow: 0 2px 20px rgba(255,215,0,0.1);}
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 0.5rem; display: flex; justify-content: flex-start;
+            align-items: center; gap: 3rem; position: relative;}
+        .logo { font-size: 1.8rem; font-weight: 700; color: var(--primary-gold); text-decoration: none; margin-left: -6rem;}
+        .nav-menu { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: rgba(26,26,26,0.98);
+            backdrop-filter: blur(15px); display: flex; flex-direction: column; padding: 5rem 2rem 2rem 2rem; transition: right 0.4s cubic-bezier(0.4,0,0.2,1);
+            z-index: 1002; list-style: none; gap: 2rem; text-align: left; border-left: 2px solid rgba(255,215,0,0.3); box-shadow: -2px 0 30px rgba(0,0,0,0.4);}
+        .nav-menu.active { right: 0; }
+        .nav-menu a { color: #fff; text-decoration: none; font-weight: 500; font-size: 1.1rem; transition: var(--transition);
+            padding: 1rem 0; border-bottom: 1px solid rgba(255,215,0,0.15); position: relative; overflow: hidden;}
+        .nav-menu a:last-child { border-bottom: none; }
+        .nav-menu a:hover { color: var(--primary-gold); padding-left: 1rem; transform: translateX(-5px);}
+        .close-menu { position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3);
+            color: var(--primary-gold); font-size: 1.5rem; cursor: pointer; transition: var(--transition); width: 40px; height: 40px; display: flex; align-items: center;
+            justify-content: center; border-radius: 50%; backdrop-filter: blur(10px);}
+        .close-menu:hover { background: rgba(255,215,0,0.2); color: var(--primary-orange); transform: rotate(90deg) scale(1.1); border-color: var(--primary-gold);}
+        .menu-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); z-index: 1001;
+            opacity: 0; visibility: hidden; transition: all 0.4s cubic-bezier(0.4,0,0.2,1); backdrop-filter: blur(2px);}
+        .menu-overlay.active { opacity: 1; visibility: visible;}
+        .hamburger { display: flex; flex-direction: column; cursor: pointer; padding: 5px; margin-left: auto; margin-right: -6rem; transition: opacity 0.3s ease;}
+        .hamburger.active { opacity: 0;}
+        .hamburger span { width: 25px; height: 3px; background: var(--primary-gold); margin: 3px 0; transition: 0.3s;}
+        .article-main { padding-top: 100px; min-height: 100vh;}
+        .article-container { max-width: 800px; margin: 0 auto; padding: 2rem;}
+        .article-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--light-gray);}
+        .article-category { display: inline-block; background: var(--primary-black); color: var(--primary-gold); padding: 0.5rem 1rem;
+            border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;}
+        .article-title { font-size: 2.5rem; font-weight: 700; color: var(--primary-black); margin-bottom: 1rem; line-height: 1.2;}
+        .article-meta { display: flex; justify-content: center; gap: 2rem; color: var(--text-gray); font-size: 0.9rem; margin-bottom: 1rem;}
+        .article-excerpt { font-size: 1.2rem; color: var(--text-gray); max-width: 600px; margin: 0 auto; line-height: 1.6;}
+        .article-content { font-size: 1.1rem; line-height: 1.8; color: #333;}
+        .article-content h2 { font-size: 1.8rem; color: var(--primary-black); margin: 2.5rem 0 1rem 0; padding-left: 1rem; border-left: 4px solid var(--primary-gold);}
+        .article-content h3 { font-size: 1.4rem; color: var(--primary-black); margin: 2rem 0 1rem 0;}
+        .article-content p { margin-bottom: 1.5rem;}
+        .article-content ul, .article-content ol { margin: 1.5rem 0; padding-left: 2rem;}
+        .article-content li { margin-bottom: 0.8rem;}
+        .highlight-box { background: linear-gradient(45deg, rgba(255,215,0,0.1), rgba(255,165,0,0.1));
+            border: 1px solid rgba(255,215,0,0.3); border-radius: 15px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary-gold);}
+        .cta-button { display: inline-block; background: linear-gradient(45deg, var(--primary-gold), var(--primary-orange));
+            color: var(--primary-black); padding: 15px 30px; text-decoration: none; font-weight: 600; border-radius: 50px; transition: var(--transition);
+            box-shadow: var(--gold-shadow);}
+        .cta-button:hover { transform: translateY(-2px); box-shadow: var(--gold-shadow-hover);}
+        .related-articles { padding: 80px 0; background: var(--light-gray);}
+        .related-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem;}
+        .section-title { text-align: center; margin-bottom: 3rem;}
+        .section-title h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--primary-black);}
+        .blog-container { position: relative;}
+        .blog-grid { display: flex; overflow-x: auto; overflow-y: hidden; gap: 2rem; margin-top: 3rem; padding-bottom: 1rem; scroll-behavior: smooth;
+            scrollbar-width: thin; scrollbar-color: var(--primary-gold) #f1f1f1;}
+        .blog-grid::-webkit-scrollbar { height: 8px;}
+        .blog-grid::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px;}
+        .blog-grid::-webkit-scrollbar-thumb { background: var(--primary-gold); border-radius: 4px;}
+        .blog-grid::-webkit-scrollbar-thumb:hover { background: var(--primary-orange);}
+        .blog-carousel-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.8); color: var(--primary-gold);
+            border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; z-index: 10; transition: var(--transition);}
+        .blog-carousel-nav:hover { background: rgba(0, 0, 0, 0.9); color: var(--primary-orange);}
+        .blog-carousel-prev { left: -25px;}
+        .blog-carousel-next { right: -25px;}
+        .article-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow-light); transition: var(--transition);
+            text-decoration: none; color: inherit; min-width: calc((100% - 4rem) / 3); flex: 0 0 calc((100% - 4rem) / 3);}
+        .article-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover);}
+        .article-card-image { height: 200px; background: linear-gradient(45deg, var(--primary-gold), var(--primary-orange));
+            display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--primary-black);}
+        .article-card-content { padding: 1.5rem;}
+        .article-card-date { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 0.5rem;}
+        .article-card-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary-black);}
+        .article-card-excerpt { color: var(--text-gray); line-height: 1.6;}
+        .footer { background: var(--secondary-black); color: #fff; padding: 4rem 0 2rem;}
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; text-align: left;}
+        .footer-section h3 { color: var(--primary-gold); font-size: 1.3rem; font-weight: 600; margin-bottom: 1.5rem;}
+        .footer-section p { color: #ccc; line-height: 1.8; margin-bottom: 0.8rem;}
+        .footer-section a { color: #ccc; text-decoration: none; transition: color 0.3s ease;}
+        .footer-section a:hover { color: var(--primary-gold);}
+        .social-links { display: flex; gap: 1rem; margin-top: 1rem;}
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: rgba(255,215,0,0.1);
+            border: 1px solid rgba(255,215,0,0.3); border-radius: 50%; color: var(--primary-gold); transition: var(--transition);}
+        .social-links a:hover { background: var(--primary-gold); color: var(--primary-black); transform: translateY(-2px);}
+        .footer-section p i { color: var(--primary-gold); margin-right: 0.5rem; width: 16px;}
+        .footer-bottom { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #333; color: #888;}
+        @media (max-width: 768px) {
+            .nav-container { padding: 0 1rem; }
+            .logo { margin-left: 0; font-size: 1.5rem; }
+            .hamburger { margin-right: 0; margin-left: auto; }
+            .nav-menu { width: 250px; right: -100%; }
+            .article-title { font-size: 2rem; }
+            .article-meta { flex-direction: column; gap: 0.5rem; }
+            .article-card { min-width: calc(100% - 2rem); flex: 0 0 calc(100% - 2rem); }
+            .blog-carousel-nav { width: 40px; height: 40px; font-size: 1.2rem; }
+            .blog-carousel-prev { left: 10px; }
+            .blog-carousel-next { right: 10px; }
+            .footer-content { grid-template-columns: repeat(2, 1fr); gap: 2rem; text-align: center; }
+            .social-links { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 1rem; }
+            .article-container { padding: 1rem; }
+            .section-title h2 { font-size: 2rem; }
+            .blog-carousel-nav { width: 35px; height: 35px; font-size: 1rem; }
+            .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Minimais</a>
+            <ul class="nav-menu">
+                <button class="close-menu">&times;</button>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="index.html#proyectos">Proyectos</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        <div class="menu-overlay"></div>
+    </header>
+    <!-- ARTÍCULO -->
+    <main class="article-main">
+        <div class="article-container">
+            <header class="article-header">
+                <span class="article-category">Procesos</span>
+                <h1 class="article-title">Los procesos que más tiempo hacen perder a una PYME (y cómo eliminarlos)</h1>
+                <div class="article-meta">
+                    <span><i class="fas fa-calendar"></i> 18 Agosto 2025</span>
+                    <span><i class="fas fa-clock"></i> 5 min de lectura</span>
+                    <span><i class="fas fa-user"></i> Equipo Minimais</span>
+                </div>
+                <p class="article-excerpt">
+                    Identifica los procesos que más horas consumen en tu empresa y aprende cómo eliminarlos con automatización para ganar eficiencia y reducir costes.
+                </p>
+            </header>
+            <article class="article-content">
+                <p>En muchas pequeñas y medianas empresas, el día a día se convierte en apagar fuegos: emails, facturas, clientes que llaman, hojas de cálculo que no cuadran… El problema no es trabajar mucho, sino <strong>trabajar mal</strong>. Hay procesos que consumen tiempo sin aportar valor, y eliminarlos con automatización puede marcar la diferencia entre crecer o quedarse estancado.</p>
+                <h2>Procesos que matan la productividad en una PYME</h2>
+                <ul style="margin-left:2rem;">
+                    <li>
+                        <strong>Gestión manual de facturas y cobros:</strong>
+                        Revisar correos, copiar datos en Excel y contabilidad. Consume horas y favorece errores.
+                    </li>
+                    <li>
+                        <strong>Seguimiento de clientes en hojas de cálculo:</strong>
+                        Los leads se pierden, se olvidan llamadas y se duplican registros. Es fácil que las oportunidades escapen.
+                    </li>
+                    <li>
+                        <strong>Comunicación interna caótica:</strong>
+                        Cadenas interminables de emails para aprobar documentos o coordinar tareas. La información se dispersa y ralentiza los procesos.
+                    </li>
+                    <li>
+                        <strong>Control de stock manual:</strong>
+                        El inventario nunca está actualizado. Puedes vender productos inexistentes o comprar lo que ya tienes.
+                    </li>
+                    <li>
+                        <strong>Informes mensuales hechos a mano:</strong>
+                        Recopilar datos cada fin de mes implica llegar tarde a la realidad del negocio. Las decisiones se basan en información desactualizada.
+                    </li>
+                </ul>
+                <h2>Cómo eliminarlos con automatización</h2>
+                <ul style="margin-left:2rem;">
+                    <li>
+                        <strong>Conciliación automática de pagos:</strong>
+                        Conecta tu sistema de facturación con tu banco y olvídate de revisar manualmente las facturas pagadas.
+                    </li>
+                    <li>
+                        <strong>Registro instantáneo de leads:</strong>
+                        Integra los formularios web con tu CRM para que cada contacto llegue organizado y sin pérdida de tiempo.
+                    </li>
+                    <li>
+                        <strong>Flujos de aprobación automáticos:</strong>
+                        Los documentos y presupuestos circulan sin emails y se aprueban siguiendo pasos definidos.
+                    </li>
+                    <li>
+                        <strong>Sincronización de ventas e inventario:</strong>
+                        Mantén tu stock actualizado automáticamente tras cada venta y evita errores de inventario.
+                    </li>
+                    <li>
+                        <strong>Dashboards automáticos:</strong>
+                        Informes clave de tu negocio listos y actualizados cada día, sin procesos manuales de cierre de mes.
+                    </li>
+                </ul>
+                <h2>El impacto real en tu negocio</h2>
+                <ul style="margin-left:2rem;">
+                    <li><strong>Liberar horas</strong> para actividades que generen ingresos directos</li>
+                    <li><strong>Reducir errores</strong> que cuestan dinero y dañan la relación con clientes</li>
+                    <li><strong>Tomar decisiones más rápidas</strong> con información actualizada y precisa</li>
+                    <li><strong>Mejorar la experiencia del cliente</strong> con respuestas más ágiles y profesionales</li>
+                    <li><strong>Escalar tu negocio</strong> sin aumentar proporcionalmente la plantilla</li>
+                </ul>
+                <div class="highlight-box">
+                    <h3>⚡ Primer paso: Audita tus procesos</h3>
+                    <p>Antes de automatizar, necesitas identificar exactamente dónde pierdes tiempo:</p>
+                    <ol>
+                        <li><strong>Lista todas las tareas repetitivas</strong> que haces semanalmente</li>
+                        <li><strong>Calcula las horas</strong> que dedicas a cada una</li>
+                        <li><strong>Prioriza por impacto:</strong> cuáles te ahorrarían más tiempo</li>
+                        <li><strong>Empieza por la más sencilla</strong> para ver resultados rápidos</li>
+                    </ol>
+                </div>
+                <h2>Conclusión</h2>
+                <p>El tiempo que pierdes en estos procesos es dinero que podrías estar invirtiendo en crecer. No se trata de trabajar más horas, sino de <strong>trabajar de forma más inteligente</strong>.</p>
+                <p>La automatización ya no es el futuro, es el presente. Y las empresas que no se adapten se quedarán atrás, no por falta de talento o recursos, sino por seguir haciendo las cosas como siempre se han hecho.</p>
+                <div class="highlight-box" style="text-align: center;">
+                    <h3>🔍 ¿Quieres identificar qué procesos están frenando tu empresa?</h3>
+                    <p>En <strong>Minimais</strong> hacemos una auditoría completa de tus procesos y te mostramos el ahorro real que podrías conseguir. Sin letra pequeña, sin compromiso.</p>
+                    <a href="index.html#contacto" class="cta-button">
+                        <i class="fas fa-search"></i> Solicitar auditoría gratuita
+                    </a>
+                </div>
+            </article>
+        </div>
+    </main>
+    <!-- ARTÍCULOS RELACIONADOS -->
+    <section class="related-articles">
+        <div class="related-container">
+            <div class="section-title">
+                <h2>Más Artículos</h2>
+                <p>Continúa aprendiendo con nuestros recursos especializados</p>
+            </div>
+            <div class="blog-container">
+                <button class="blog-carousel-nav blog-carousel-prev" onclick="scrollBlogCarousel(-1)">‹</button>
+                <button class="blog-carousel-nav blog-carousel-next" onclick="scrollBlogCarousel(1)">›</button>
+                <div class="blog-grid">
+                    <a href="articulo-kpis-esenciales-pyme.html" class="article-card">
+                        <div class="article-card-image">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="article-card-content">
+                            <div class="article-card-date">15 Dic 2024</div>
+                            <h3 class="article-card-title">5 KPIs Esenciales para Medir el Crecimiento de tu PYME</h3>
+                            <p class="article-card-excerpt">Descubre las métricas clave que toda empresa en crecimiento debe monitorear para tomar decisiones estratégicas basadas en datos.</p>
+                        </div>
+                    </a>
+                    <a href="articulo-cloud-vs-onpremise.html" class="article-card">
+                        <div class="article-card-image">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="article-card-content">
+                            <div class="article-card-date">5 Dic 2024</div>
+                            <h3 class="article-card-title">Cloud vs On-Premise: Qué Opción Conviene a tu PYME</h3>
+                            <p class="article-card-excerpt">Analizamos las ventajas y desventajas de cada opción para ayudarte a tomar la mejor decisión para tu negocio.</p>
+                        </div>
+                    </a>
+                    <a href="articulo-big-data-pymes.html" class="article-card">
+                        <div class="article-card-image">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="article-card-content">
+                            <div class="article-card-date">1 Dic 2024</div>
+                            <h3 class="article-card-title">Big Data para PYMEs: Extraer Valor de tus Datos</h3>
+                            <p class="article-card-excerpt">Aprende cómo las pequeñas empresas pueden aprovechar el análisis de datos para obtener insights valiosos sin grandes inversiones.</p>
+                        </div>
+                    </a>
+                    <a href="articulo-integracion-sistemas.html" class="article-card">
+                        <div class="article-card-image">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="article-card-content">
+                            <div class="article-card-date">25 Nov 2024</div>
+                            <h3 class="article-card-title">Integración de Sistemas: Conecta tu Ecosistema Digital</h3>
+                            <p class="article-card-excerpt">Descubre cómo conectar todas tus herramientas para crear un flujo de trabajo unificado y eficiente.</p>
+                        </div>
+                    </a>
+                    <a href="articulo-ia-para-pymes.html" class="article-card">
+                        <div class="article-card-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="article-card-content">
+                            <div class="article-card-date">20 Nov 2024</div>
+                            <h3 class="article-card-title">IA Práctica para PYMEs: Casos de Uso Reales</h3>
+                            <p class="article-card-excerpt">Ejemplos concretos de cómo la inteligencia artificial puede mejorar la eficiencia sin grandes inversiones.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Minimais</h3>
+                <p>Ayudamos a PYMEs a escalar eficientemente mediante tecnología de vanguardia y equipos de alto rendimiento.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Servicios</h3>
+                <p><a href="index.html#servicios">Análisis de Datos</a></p>
+                <p><a href="index.html#servicios">Automatización</a></p>
+                <p><a href="index.html#servicios">Integraciones</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Recursos</h3>
+                <p><a href="index.html#blog">Blog</a></p>
+                <p><a href="index.html#nosotros">Sobre Nosotros</a></p>
+                <p><a href="#">Trabaja con Nosotros</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-envelope"></i> hello@minimais.es</p>
+                <p><i class="fas fa-phone"></i> +34 671 130 157</p>
+                <p><i class="fas fa-map-marker-alt"></i> Palma de Mallorca, España</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Minimais. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script>
+        // ========== MENÚ MÓVIL ==========
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const closeMenu = document.querySelector('.close-menu');
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        }
+        function closeMenuHandler() {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        }
+        hamburger.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', closeMenuHandler);
+        menuOverlay.addEventListener('click', closeMenuHandler);
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', closeMenuHandler);
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #000 0%, #1a1a1a 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+        function scrollBlogCarousel(direction) {
+            const carousel = document.querySelector('.blog-grid');
+            const cards = document.querySelectorAll('.article-card');
+            if (cards.length === 0) return;
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 32; // 2rem
+            const moveDistance = cardWidth + gap;
+            const currentScroll = carousel.scrollLeft;
+            const currentIndex = Math.round(currentScroll / moveDistance);
+            let newIndex = currentIndex + direction;
+            const maxIndex = Math.max(0, cards.length - Math.floor(carousel.offsetWidth / moveDistance));
+            newIndex = Math.max(0, Math.min(newIndex, maxIndex));
+            const newPosition = newIndex * moveDistance;
+            carousel.scrollTo({ left: newPosition, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
