@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBMRE297S7"></script>
     <script>
@@ -11,13 +12,16 @@
       gtag('js', new Date());
       gtag('config', 'G-VBMRE297S7');
     </script>
+    
     <!-- SEO Meta Tags del artículo -->
     <title>Los procesos que más tiempo hacen perder a una PYME (y cómo eliminarlos) | Minimais</title>
     <meta name="description" content="Identifica los procesos que más horas consumen en tu empresa y aprende cómo eliminarlos con automatización para ganar eficiencia y reducir costes.">
+    
     <!-- Meta Tags adicionales -->
     <meta name="keywords" content="procesos pymes, automatización empresa, ahorrar tiempo pyme, eliminar tareas repetitivas, consultoría de procesos">
     <meta name="author" content="Minimais">
     <meta name="robots" content="index, follow">
+    
     <!-- Open Graph -->
     <meta property="og:title" content="Los procesos que más tiempo hacen perder a una PYME (y cómo eliminarlos)">
     <meta property="og:description" content="Identifica los procesos que más horas consumen en tu empresa y aprende cómo eliminarlos con automatización para ganar eficiencia y reducir costes.">
@@ -26,15 +30,22 @@
     <meta property="og:image" content="https://minimais.es/og-image.jpg">
     <meta property="og:locale" content="es_ES">
     <meta property="og:site_name" content="Minimais">
+    
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Los procesos que más tiempo hacen perder a una PYME (y cómo eliminarlos)">
     <meta name="twitter:description" content="Identifica los procesos que más horas consumen en tu empresa y aprende cómo eliminarlos con automatización para ganar eficiencia y reducir costes.">
     <meta name="twitter:image" content="https://minimais.es/og-image.jpg">
+    
     <!-- Canonical URL -->
     <link rel="canonical" href="https://minimais.es/articulo-procesos-tiempo-pymes.html">
+    
     <!-- External Resources -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Calendly inline widget script -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #000; background: #fff; }
@@ -45,6 +56,7 @@
             --shadow-light: 0 10px 30px rgba(0,0,0,0.1); --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
             --gold-shadow: 0 4px 15px rgba(255,215,0,0.3); --gold-shadow-hover: 0 6px 25px rgba(255,215,0,0.4);
         }
+
         .header { background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-black) 100%);
             color: #fff; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000;
             box-shadow: 0 2px 20px rgba(255,215,0,0.1);}
@@ -69,6 +81,7 @@
         .hamburger { display: flex; flex-direction: column; cursor: pointer; padding: 5px; margin-left: auto; margin-right: -6rem; transition: opacity 0.3s ease;}
         .hamburger.active { opacity: 0;}
         .hamburger span { width: 25px; height: 3px; background: var(--primary-gold); margin: 3px 0; transition: 0.3s;}
+        
         .article-main { padding-top: 100px; min-height: 100vh;}
         .article-container { max-width: 800px; margin: 0 auto; padding: 2rem;}
         .article-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid var(--light-gray);}
@@ -87,8 +100,99 @@
             border: 1px solid rgba(255,215,0,0.3); border-radius: 15px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary-gold);}
         .cta-button { display: inline-block; background: linear-gradient(45deg, var(--primary-gold), var(--primary-orange));
             color: var(--primary-black); padding: 15px 30px; text-decoration: none; font-weight: 600; border-radius: 50px; transition: var(--transition);
-            box-shadow: var(--gold-shadow);}
+            box-shadow: var(--gold-shadow); cursor: pointer;}
         .cta-button:hover { transform: translateY(-2px); box-shadow: var(--gold-shadow-hover);}
+
+        /* ========== MODAL CALENDLY ========== */
+        .custom-calendly-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            backdrop-filter: blur(5px);
+        }
+
+        .custom-calendly-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .calendly-modal-content {
+            position: relative;
+            background: var(--primary-black);
+            border: 3px solid var(--primary-gold);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            width: 90%;
+            height: 85vh;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .calendly-widget-container {
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .calendly-widget-container ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .calendly-widget-container ::-webkit-scrollbar-track {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .calendly-widget-container ::-webkit-scrollbar-thumb {
+            background: var(--primary-gold);
+            border-radius: 4px;
+        }
+
+        .calendly-widget-container ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-orange);
+        }
+
+        .calendly-close-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--primary-gold);
+            color: var(--primary-black);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: var(--gold-shadow);
+            z-index: 10;
+        }
+
+        .calendly-close-btn:hover {
+            background: var(--primary-orange);
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .related-articles { padding: 80px 0; background: var(--light-gray);}
         .related-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem;}
         .section-title { text-align: center; margin-bottom: 3rem;}
@@ -126,6 +230,7 @@
         .social-links a:hover { background: var(--primary-gold); color: var(--primary-black); transform: translateY(-2px);}
         .footer-section p i { color: var(--primary-gold); margin-right: 0.5rem; width: 16px;}
         .footer-bottom { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #333; color: #888;}
+        
         @media (max-width: 768px) {
             .nav-container { padding: 0 1rem; }
             .logo { margin-left: 0; font-size: 1.5rem; }
@@ -139,7 +244,9 @@
             .blog-carousel-next { right: 10px; }
             .footer-content { grid-template-columns: repeat(2, 1fr); gap: 2rem; text-align: center; }
             .social-links { justify-content: center; }
+            .calendly-modal-content { width: 90%; height: 80vh; padding: 10px; }
         }
+        
         @media (max-width: 480px) {
             .container { padding: 0 1rem; }
             .article-container { padding: 1rem; }
@@ -170,6 +277,7 @@
         </nav>
         <div class="menu-overlay"></div>
     </header>
+
     <!-- ARTÍCULO -->
     <main class="article-main">
         <div class="article-container">
@@ -177,7 +285,7 @@
                 <span class="article-category">Procesos</span>
                 <h1 class="article-title">Los procesos que más tiempo hacen perder a una PYME (y cómo eliminarlos)</h1>
                 <div class="article-meta">
-                    <span><i class="fas fa-calendar"></i> 10 de Agosto, 2025</span>
+                    <span><i class="fas fa-calendar"></i> 18 Agosto 2025</span>
                     <span><i class="fas fa-clock"></i> 5 min de lectura</span>
                     <span><i class="fas fa-user"></i> Equipo Minimais</span>
                 </div>
@@ -187,6 +295,7 @@
             </header>
             <article class="article-content">
                 <p>En muchas pequeñas y medianas empresas, el día a día se convierte en apagar fuegos: emails, facturas, clientes que llaman, hojas de cálculo que no cuadran… El problema no es trabajar mucho, sino <strong>trabajar mal</strong>. Hay procesos que consumen tiempo sin aportar valor, y eliminarlos con automatización puede marcar la diferencia entre crecer o quedarse estancado.</p>
+                
                 <h2>Procesos que matan la productividad en una PYME</h2>
                 <ul style="margin-left:2rem;">
                     <li>
@@ -210,6 +319,7 @@
                         Recopilar datos cada fin de mes implica llegar tarde a la realidad del negocio. Las decisiones se basan en información desactualizada.
                     </li>
                 </ul>
+                
                 <h2>Cómo eliminarlos con automatización</h2>
                 <ul style="margin-left:2rem;">
                     <li>
@@ -233,6 +343,7 @@
                         Informes clave de tu negocio listos y actualizados cada día, sin procesos manuales de cierre de mes.
                     </li>
                 </ul>
+                
                 <h2>El impacto real en tu negocio</h2>
                 <ul style="margin-left:2rem;">
                     <li><strong>Liberar horas</strong> para actividades que generen ingresos directos</li>
@@ -241,6 +352,7 @@
                     <li><strong>Mejorar la experiencia del cliente</strong> con respuestas más ágiles y profesionales</li>
                     <li><strong>Escalar tu negocio</strong> sin aumentar proporcionalmente la plantilla</li>
                 </ul>
+                
                 <div class="highlight-box">
                     <h3>⚡ Primer paso: Audita tus procesos</h3>
                     <p>Antes de automatizar, necesitas identificar exactamente dónde pierdes tiempo:</p>
@@ -251,19 +363,22 @@
                         <li><strong>Empieza por la más sencilla</strong> para ver resultados rápidos</li>
                     </ol>
                 </div>
+                
                 <h2>Conclusión</h2>
                 <p>El tiempo que pierdes en estos procesos es dinero que podrías estar invirtiendo en crecer. No se trata de trabajar más horas, sino de <strong>trabajar de forma más inteligente</strong>.</p>
                 <p>La automatización ya no es el futuro, es el presente. Y las empresas que no se adapten se quedarán atrás, no por falta de talento o recursos, sino por seguir haciendo las cosas como siempre se han hecho.</p>
+                
                 <div class="highlight-box" style="text-align: center;">
                     <h3>🔍 ¿Quieres identificar qué procesos están frenando tu empresa?</h3>
                     <p>En <strong>Minimais</strong> hacemos una auditoría completa de tus procesos y te mostramos el ahorro real que podrías conseguir. Sin letra pequeña, sin compromiso.</p>
-                    <a href="index.html#contacto" class="cta-button">
+                    <a href="#" onclick="openCalendlyModal()" class="cta-button">
                         <i class="fas fa-search"></i> Solicitar auditoría gratuita
                     </a>
                 </div>
             </article>
         </div>
     </main>
+
     <!-- ARTÍCULOS RELACIONADOS -->
     <section class="related-articles">
         <div class="related-container">
@@ -305,7 +420,7 @@
                             <p class="article-card-excerpt">Aprende cómo las pequeñas empresas pueden aprovechar el análisis de datos para obtener insights valiosos sin grandes inversiones.</p>
                         </div>
                     </a>
-                    <!-- <a href="articulo-integracion-sistemas.html" class="article-card">
+                    <a href="articulo-integracion-sistemas.html" class="article-card">
                         <div class="article-card-image">
                             <i class="fas fa-sync-alt"></i>
                         </div>
@@ -324,11 +439,12 @@
                             <h3 class="article-card-title">IA Práctica para PYMEs: Casos de Uso Reales</h3>
                             <p class="article-card-excerpt">Ejemplos concretos de cómo la inteligencia artificial puede mejorar la eficiencia sin grandes inversiones.</p>
                         </div>
-                    </a> -->
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content">
@@ -364,28 +480,47 @@
             <p>© 2024 Minimais. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- Modal Calendly -->
+    <div id="customCalendlyModal" class="custom-calendly-modal">
+        <div class="calendly-modal-content">
+            <button class="calendly-close-btn" onclick="closeCalendlyModal()">&times;</button>
+            <div class="calendly-widget-container">
+                <div class="calendly-inline-widget" 
+                     data-url="https://calendly.com/hello-minimais/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=ffffff&primary_color=FFD700" 
+                     style="min-width:320px;height:100%;width:100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // ========== MENÚ MÓVIL ==========
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         const menuOverlay = document.querySelector('.menu-overlay');
         const closeMenu = document.querySelector('.close-menu');
+        
         function toggleMenu() {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
             menuOverlay.classList.toggle('active');
         }
+        
         function closeMenuHandler() {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
             menuOverlay.classList.remove('active');
         }
+        
         hamburger.addEventListener('click', toggleMenu);
         closeMenu.addEventListener('click', closeMenuHandler);
         menuOverlay.addEventListener('click', closeMenuHandler);
+        
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', closeMenuHandler);
         });
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -398,6 +533,7 @@
                 }
             });
         });
+        
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
             if (window.scrollY > 100) {
@@ -408,6 +544,7 @@
                 header.style.backdropFilter = 'none';
             }
         });
+        
         function scrollBlogCarousel(direction) {
             const carousel = document.querySelector('.blog-grid');
             const cards = document.querySelectorAll('.article-card');
@@ -423,6 +560,33 @@
             const newPosition = newIndex * moveDistance;
             carousel.scrollTo({ left: newPosition, behavior: 'smooth' });
         }
+
+        // ========== MODAL CALENDLY ==========
+        function openCalendlyModal() {
+            const modal = document.getElementById('customCalendlyModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCalendlyModal() {
+            const modal = document.getElementById('customCalendlyModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('customCalendlyModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCalendlyModal();
+            }
+        });
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCalendlyModal();
+            }
+        });
     </script>
 </body>
 </html>
